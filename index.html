@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- 如有需要引入css资源文件请放在这里 -->
+    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- JQ -->
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <!--移动端版本兼容 -->
+    <script type="text/javascript" src='js/resize.js'></script>
+    <script type="text/javascript" src="./js/lufylegend-1.10.1.min.js"></script>
+    <!-- 加载资源 -->
+    <script src="https://cdn.staticfile.org/PreloadJS/0.6.0/preloadjs.min.js"></script>
+    </script>
+    <script src="https://cdn.staticfile.org/SoundJS/0.6.0/soundjs.min.js"></script>
+    <script src="./js/index_loading.js"></script>
+    <script type="text/javascript">
+        // window.onload = function(){
+        //     document.addEventListener('WeixinJSBridgeReady',function(){
+        //         $('#bgmusic')[0].play();
+        //     },false);
+        // }
+    </script>
+</head>
+
+<body>
+    <!-- 添加音乐 -->
+    <!-- <audio id="bgmusic" class="yue" controls preload="auto" loop="loop" src="./music/bgm.mp3"></audio> -->
+    <!-- <img src="img/yue.png" alt="" class="mus rotate"> -->
+    <div class="loading" style="display:block;">
+        <div class="innerDiv">
+            <img src="./img/logo.png" alt="" class="logo">
+            <img src="./img/image.png" alt="" class="image">
+            <div class="progress-bar">
+                <span class="bar"></span>
+            </div>
+            <p class="logoWords"><span class='progress'>0%</span></p>
+        </div>
+    </div>
+    <!-- 这里开始写内容 -->
+    <div class="wrap">
+        <!-- 引导页 -->
+        <div class="guide-bg pageSytle">
+            <div class="innerDiv">
+                <img src="./img/logo.png" alt="" class="logo">
+                <img src="./img/guide-img1.png" alt="" class="guide-img1">
+                <img src="./img/guide-img2.png" alt="" class="guide-img2">
+                <img src="./img/guide-img3.png" alt="" class="guide-img3">
+            </div>
+        </div>
+        <!-- 首页 -->
+        <div class="home pageSytle">
+            <div class="innerDiv">
+                <img src="./img/logo.png" alt="" class="logo">
+                <div class="surplus">
+                    <img src="./img/icon.png" alt="" class="icon">
+                    <span>今天还剩机会 <em>5</em> 次</span>
+                </div>
+                <img src="./img/active-ico.png" alt="" class="active-ico">
+                <img src="./img/banner.png" alt="" class="banner">
+                <img src="./img/banner2.png" alt="" class="banner2">
+                <img src="./img/start-btn.png" alt="" class="start-btn clickBtn">
+                <img src="./img/prize-btn.png" alt="" class="prize-btn">
+                <img src="./img/ranking-btn.png" alt="" class="ranking-btn">
+            </div>
+        </div>
+        <!-- 排行榜 -->
+        <div class="ranking-list pageSytle">
+            <div class="innerDiv">
+                <img src="./img/logo.png" alt="" class="logo">
+                <img src="./img/close-btn.png" alt="" class="close-btn">
+                <img src="./img/ranking-banner.png" alt="" class="ranking-banner">
+                <div class="list">
+                    <div class="curr">
+                        <div class="curr-left">48</div>
+                        <div class="curr-center">
+                            <img src="./img/header-img.png" alt="">
+                            <span>昵称昵称</span>
+                        </div>
+                        <div class="curr-right">23</div>
+                    </div>
+                    <p class="line"></p>
+                    <div class="list-title">
+                        <span>排行</span>
+                        <span>用户昵称</span>
+                        <span>得分</span>
+                    </div>
+                    <ul class="list-content">
+                        <li>
+                            <div class="left">
+                                <img src="./img/ico-1.png" alt="">
+                            </div>
+                            <div class="center">
+                                <img src="./img/header-img.png" alt="">
+                                <span>昵称昵称</span>
+                            </div>
+                            <div class="right">
+                                <span>58</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                <img src="./img/ico-2.png" alt="">
+                            </div>
+                            <div class="center">
+                                <img src="./img/header-img.png" alt="">
+                                <span>昵称昵称</span>
+                            </div>
+                            <div class="right">
+                                <span>58</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                <img src="./img/ico-3.png" alt="">
+                            </div>
+                            <div class="center">
+                                <img src="./img/header-img.png" alt="">
+                                <span>昵称昵称</span>
+                            </div>
+                            <div class="right">
+                                <span>58</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                4
+                            </div>
+                            <div class="center">
+                                <img src="./img/header-img.png" alt="">
+                                <span>昵称昵称</span>
+                            </div>
+                            <div class="right">
+                                <span>58</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                5
+                            </div>
+                            <div class="center">
+                                <img src="./img/header-img.png" alt="">
+                                <span>昵称昵称</span>
+                            </div>
+                            <div class="right">
+                                <span>58</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                6
+                            </div>
+                            <div class="center">
+                                <img src="./img/header-img.png" alt="">
+                                <span>昵称昵称</span>
+                            </div>
+                            <div class="right">
+                                <span>58</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                7
+                            </div>
+                            <div class="center">
+                                <img src="./img/header-img.png" alt="">
+                                <span>昵称昵称</span>
+                            </div>
+                            <div class="right">
+                                <span>58</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                8
+                            </div>
+                            <div class="center">
+                                <img src="./img/header-img.png" alt="">
+                                <span>昵称昵称</span>
+                            </div>
+                            <div class="right">
+                                <span>58</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="left">
+                                9
+                            </div>
+                            <div class="center">
+                                <img src="./img/header-img.png" alt="">
+                                <span>昵称昵称</span>
+                            </div>
+                            <div class="right">
+                                <span>58</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 游戏页面 -->
+        <div class="game" id="mylegend"></div>
+        <!-- 大转盘 -->
+        <div class="luckDraw pageSytle">
+            <div class="innerDiv">
+                <img src="./img/award0.png" alt="" class="award0">
+                <img src="./img/award3.png" alt="" class="award3">
+                <div class="turntable">
+                    <img src="./img/award1.png" alt="" class="award1">
+                    <img src="./img/award2.png" alt="" class="award2 clickBtn">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 提示 -->
+    <div class="mask">
+        <div class="mask-container">
+            <p class="mask-text">默认内容</p>
+            <button class="mask-confirm clickBtn">确认</button>
+        </div>
+    </div>
+    <!-- mian -->
+    <script type="text/javascript" src='./js/Bullet.js'></script>
+    <script type="text/javascript" src='./js/Player.js'></script>
+    <script type="text/javascript" src='./js/enemy.js'></script>
+    <script type="text/javascript" src='./js/magic.js'></script>
+    <script type="text/javascript" src='./js/game.js'></script>
+    <script type="text/javascript" src='./js/main.js'></script>
+</body>
+
+</html>

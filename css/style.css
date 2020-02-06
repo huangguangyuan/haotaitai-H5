@@ -1,0 +1,195 @@
+/*===============================================*/
+/*===========公共类名=============*/
+/*===============================================*/
+*{margin: 0;padding: 0;}
+/*input{-webkit-appearance:none;}*/
+html, body {position: relative;}
+body{font-family:microsoft yahei;color:#000;margin: 0;padding: 0;background-color: #0176d2;overflow-y: scroll;}
+ul li{list-style-type: none;}
+em,i,small{font-style: normal;}
+/*音乐*/
+.mus{position: fixed;width: 8%;right: 2%;top:1%;z-index: 5;}
+.yue{position: absolute;top:0;left: 0;z-index: -1;opacity: 0;}
+.loading{position: absolute;width: 100%;height: 100vh;top:0;left: 0;z-index: 5;display: none;perspective:300px;-webkit-perspective:300px;background: url(../img/loading-bg.jpg) center center no-repeat;background-size: cover;background-color: #64d4fb;}
+.logo{position: absolute;width: 2.56rem;top:0rem;left: 0.3rem;}
+.image{position: absolute;width: 1.86rem;left: 50%;margin-left: -0.93rem;top:3.5rem;}
+.progress-bar{position: absolute;width: 4.6rem;height: 0.2rem;background-color: #ffffff;border-radius: 1rem;left: 50%;margin-left: -2.3rem;top:6.6rem;border:1px #ffffff solid;overflow: hidden;}
+.bar{position: absolute;width: 100%;height: 100%;background-color: #d61f7a;top:0;left: -20%;border-radius: 1rem;}
+.logoWords{font-size: 0.3rem;color: #0069b0;text-align: center;position: absolute;width: 100%;left: 0;top:6.1rem;font-weight: 500;}
+/*外部框架定位*/
+.innerDiv{width:7.5rem;height: 12rem;position: absolute;left: 50%;margin-left: -3.75rem;top:0;border-top:1px rgba(0,0,0,1) solid;border-bottom: 1px rgba(0,0,0,1) solid;} 
+.arrow{position: fixed;bottom: 0.3rem;left: 50%;width: 0.56rem;margin-left: -0.28rem;z-index: 2;}
+
+/*添加内容*/
+.wrap{width: 100vw;height: 100vh;position: relative; overflow: hidden;position: absolute;top:0;background-color: #0176d2;}
+.pageSytle{overflow: hidden;display: none;width: 100vw;height: 100vh;position: absolute;top:0;left: 0;}
+/* 
+** 提 示
+**/
+.mask{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: none;}
+.mask-container{position: absolute;width: 90%;border-radius: 0.2rem;box-sizing: border-box;padding:0.7rem 0;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-color: #ffffff;}
+.mask-text{padding:0 0.2rem;font-size: 0.3rem;text-align: center;}
+.mask-confirm{display: block;outline: none;border:0;width: 2.2rem;height: 0.7rem;margin: 0.6rem auto 0;background-color: #023067;font-size: 0.3rem;border-radius: 0.2rem;color: #ffffff;}
+
+/* 
+** 引导页
+**/
+.guide-bg{background: url(../img/guide-bg.jpg) center center no-repeat;background-size: cover;}
+.guide-img1{position: absolute;width: 7.46rem;top:0.5rem;right: -0.6rem;}
+.guide-img2{position: absolute;width: 6.43rem;left: 50%;margin-left: -3.215rem;top:4.5rem;}
+.guide-img3{position: absolute;width: 6.19rem;left: 0.5rem;top:7.8rem;}
+
+/* 
+** 首页
+**/
+.home{background: url(../img/home-bg.jpg) center center no-repeat;background-size: cover;}
+.surplus{position: absolute;width: 2.63rem;height: 0.5rem;background-color: #dbf0fe;border-radius: 0.2rem;top:0.5rem;left: 0.2rem;display: flex;align-items: center;}
+.icon{width: 0.5rem;}
+.surplus span{font-size: 0.24rem;color: #134e90;margin-left: 0.05rem;}
+.active-ico{position: absolute;width: 0.89rem;top:0.2rem;right: 0.3rem;}
+.banner{position: absolute;width: 6rem;left: 50%;margin-left: -3rem;top:1.9rem;}
+.banner2{position: absolute;width: 6.57rem;left: 50%;margin-left: -3.285rem;top:6rem;}
+.start-btn{position: absolute;width: 2.72rem;left: 50%;margin-left: -1.36rem;top:10rem;}
+.prize-btn{position: absolute;width: 1.7rem;left: 1.8rem;bottom: 0.3rem;}
+.ranking-btn{position: absolute;width: 1.7rem;right: 1.8rem;bottom: 0.3rem;}
+
+/* 
+** 排行榜
+**/
+.ranking-list{background: url(../img/home-bg.jpg) center center no-repeat;background-size: cover;}
+.ranking-banner{display: block;width: 6.58rem;margin: 0.15rem auto 0;}
+.ranking-list .list{width: 6.52rem;height: 8.77rem;margin: 0.1rem auto 0;background-color: rgba(255, 255, 255, 0.8);border-radius: 0.3rem;box-sizing: border-box;padding:0 0.3rem;}
+.curr{height: 0.8rem;background-color: #3b7fda;border-radius: 0.15rem;display: flex;font-size: 0.28rem;color: #ffffff;justify-content: space-between;align-items: center;box-sizing: border-box;padding:0 0.4rem;}
+.curr-center{display: flex;align-items: center;}
+.curr-center img{width: 0.7rem;height: 0.7rem;}
+.curr-center span{margin-left: 0.2rem;}
+.line{height: 0.02rem;background-color: #d8e8f2;margin: 0.2rem auto;}
+.list-title{height: 0.5rem;background-color: #e1f2ff;box-sizing: border-box;border-radius: 0.5rem;margin: 0 auto;display: flex;justify-content: space-between;padding:0 0.4rem;align-items: center;}
+.list-title span{color: #333333;font-size: 0.28rem;}
+.list-content{margin: 0 auto;height: 7rem;overflow-y: scroll;}
+.list-content li{display: flex;box-sizing: border-box;padding:0.2rem 0.2rem;justify-content: space-between;align-items: center;border-bottom:0.02rem #d8e7f2 solid; }
+.list-content li .left{width: 0.7rem;font-size: 0.28rem;text-align: center;}
+.list-content li .left img{width: 0.7rem;}
+.list-content li .center{display: flex;align-items: center;}
+.list-content li .center img{width: 0.7rem;height: 0.7rem;}
+.list-content li .center span{font-size: 0.26rem;margin-left: 0.2rem;}
+.list-content li .right{width: 0.7rem;font-size: 0.28rem;}
+.close-btn{position: absolute;width: 0.6rem;top:0rem;right: 0.2rem;}
+
+/* 
+** 游戏页面
+**/
+.game{overflow: hidden;width: 100vw;height: 100vh;position: absolute;top:0;left: 0;display: none;}
+
+/* 
+** 大转盘
+**/
+.luckDraw{background: url(../img/award.png) center center no-repeat;background-size: cover;background-color: #0176d2;}
+.award0{position: absolute;width: 4.83rem;left: 50%;margin-left: -2.415rem;top:0.2rem;}
+.turntable{position: absolute;width: 6.42rem;height: 6.42rem;left: 50%;margin-left: -3.21rem;top:4.2rem;}
+.award1{position: absolute;width: 6.42rem;height: 6.42rem;left: 50%;margin-left: -3.21rem;top:0;transition: 2.5s ease-out all;}
+.award2{position: absolute;width: 1.75rem;left: 50%;margin-left: -0.875rem;top:1.9rem;}
+.award3{position: absolute;width: 6.96rem;left: 50%;margin-left: -3.48rem;top:3.1rem;}
+
+
+
+
+
+/*===============================================*/
+/*===========动画效果=============*/
+/*===============================================*/
+
+.rotate{-webkit-animation: rotate 3s linear both infinite;animation: rotate 3s linear both infinite;}
+.arrowMove{animation:arrowMove 1s ease-in-out both infinite;-webkit-animation:arrowMove 1s ease-in-out both infinite;}
+/*arrowMove*/
+@keyframes arrowMove{
+  0%{
+    transform:translate3d(0,0,0);
+  }
+  50%{
+    transform:translate3d(0,10px,0);
+  }
+  100%{
+    transform:translate3d(0,0,0);
+  }
+}
+@-webkit-keyframes arrowMove{
+  0%{
+    -webkit-transform:translate3d(0,0,0);
+  }
+  50%{
+    -webkit-transform:translate3d(0,10px,0);
+  }
+  100%{
+    -webkit-transform:translate3d(0,0,0);
+  }
+}
+/*rotate*/
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform:rotate(0deg);
+  }
+  100%{
+    -webkit-transform:rotate(360deg);
+  }
+}
+@keyframes rotate {
+  0% {
+    transform:rotate(0deg);
+  }
+  100%{
+    transform:rotate(360deg);
+  }
+}
+/* shan */
+.shan{animation:shan 0.7s ease-in-out both infinite;}
+@keyframes shan {
+  0% {
+    opacity: 0.3;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0.3;
+  }
+}
+/* bigg */
+.bigg{animation:bigg 1s ease-in-out both infinite;}
+@keyframes bigg {
+  0% {
+    transform: scale3d(1,1,1);
+  }
+  50%{
+    transform: scale3d(1.05,1.05,1.05);
+  }
+  100%{
+    transform: scale3d(1,1,1);
+  }
+}
+
+@keyframes handMove {
+  0% {
+    transform: translate3d(0,0,0);
+  }
+  100%{
+    transform: translate3d(0,-2rem,0);
+  }
+}
+
+.fadeInLeft{animation:fadeInLeft 1.5s ease both;}
+.bounce{animation:bounce 1s ease both;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
