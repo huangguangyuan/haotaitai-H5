@@ -91,8 +91,16 @@ em,i,small{font-style: normal;}
 .award2{position: absolute;width: 1.75rem;left: 50%;margin-left: -0.875rem;top:1.9rem;}
 .award3{position: absolute;width: 6.96rem;left: 50%;margin-left: -3.48rem;top:3.1rem;}
 
-
-
+/* 
+** 弹框
+**/
+.dialog{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: none;}
+.dialog-container{position: absolute;width:5.87rem;height:5.84rem;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/dialog.png');background-size: cover;}
+.dialog-top{ width: 4.8rem; position: absolute; top: -1.75rem; left: 50%; transform: translateX(-50%); }
+.dialog-text{ padding-top:1.78rem;color:#fff;text-align: center;}
+.dialog-tip{ font-size: 0.42rem; padding-bottom: 0.24rem; }
+.dialog-context{ font-size: 0.28rem; }
+.dialog-btn{ width: 3.28rem; position: absolute; bottom: 0.55rem; left: 50%; transform: translateX(-50%); }
 
 
 /*===============================================*/
