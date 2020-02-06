@@ -100,7 +100,7 @@ em,i,small{font-style: normal;}
 .dialog-text{ padding-top:1.78rem;color:#fff;text-align: center;}
 .dialog-tip{ font-size: 0.42rem; padding-bottom: 0.24rem; }
 .dialog-context{ font-size: 0.28rem; }
-.dialog-btn{ width: 3.28rem; position: absolute; bottom: 0.55rem; left: 50%; transform: translateX(-50%); }
+.dialog-btn{ width: 3.28rem; position: absolute; bottom: 0.55rem; left: 50%; transform: translateX(-50%); display: none;}
 
 
 /*===============================================*/
