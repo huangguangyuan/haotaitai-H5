@@ -23,7 +23,6 @@ Enemy.prototype.onframe = function (){
     self.y += self.speed;
     if(self.y >= LGlobal.height){
         enemyLayer.removeChild(self);
-        
     }
 };
 

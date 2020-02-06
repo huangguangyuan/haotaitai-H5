@@ -5,12 +5,21 @@ $('.start-btn').on('touchstart', function (e) {
     init(1000 / 40, "mylegend", 750, 1484, main);
 });
 
+$(function() {
+	createjs.Sound.alternateExtensions = ["mp3"];
+    createjs.Sound.registerSound("./music/zero.wav", "zero"); 
+    createjs.Sound.registerSound("./music/three.wav", "three"); 
+    createjs.Sound.registerSound("./music/bomb.mp3", "bomb"); 
+});
+
 var loadingLayer, backLayer, gameLayer, bulletLayer, enemyLayer, bgLayer, magicLayer;
-var player;
+var scoreLayer,scoreTxt;
+var player,boss;
 var mouseStartX, mouseStartY, mouseNowX, mouseNowY;
 var MOVE_STEP = 20;
 var frame = 0, frame2 = 0;
 var imglist = {};
+
 /**
  * 子弹类型数组
  * 【开始角度，增加角度，子弹速度，角度加速度，子弹总数，发动频率，枪口旋转】
@@ -35,6 +44,9 @@ var imgData = [
     { name: "remove", path: "./img/remove.png" },
     { name: "magic1", path: "./img/magic1.png" },
     { name: "magic2", path: "./img/magic2.png" },
+    { name: "bomb", path: "./img/bomb.png" },
+    { name: "score-bg", path: "./img/score-bg.png" },
+    { name: "boss", path: "./img/boss.png" },
 ]
 function main() {
     LGlobal.stageScale = LStageScaleMode.EXACT_FIT; //设置全屏变量
@@ -46,10 +58,29 @@ function main() {
     backLayer.addChild(loadingLayer);
     LLoadManage.load(imgData, function (progress) {
         loadingLayer.setProgress(progress);
-    }, gameInit)
+    }, readyFn)
 }
 
-function gameInit(result) {
+function readyFn(result){
+    $('.ready').show();
+    
+    var downNum = 3;
+    var timer = setInterval(() => {
+        createjs.Sound.play("three");
+        downNum --;
+        $('.ready h5').text(downNum);
+        if(downNum <= 0){
+            $('.ready h5').text('Ready Go');
+            createjs.Sound.stop("three");
+            createjs.Sound.play("zero");
+            setTimeout(function(){
+                $('.ready').hide();
+                gameInit();
+            },1000);
+            clearInterval(timer);
+        }
+    }, 1000);
+
     // 取得图片读取结果
     LGlobal.setDebug(true);
     imglist = result;
@@ -61,9 +92,8 @@ function gameInit(result) {
     bgLayer.addChild(bgLayer.bitmap);
     backLayer.addChild(bgLayer);
 
-
     var bitmapData = new LBitmapData(imglist['player']);
-    player = new Player(100, 150, bitmapData.width * 0.5, 0, bitmapData, 30);
+    player = new Player((LGlobal.width - bitmapData.width)/2, LGlobal.height - bitmapData.height - 100, bitmapData.width * 0.5, 0, bitmapData, 30);
     backLayer.addChild(player);
     player.setBullet(0);
 
@@ -76,6 +106,28 @@ function gameInit(result) {
     magicLayer = new LSprite();
     backLayer.addChild(magicLayer);
 
+    boss = new Boss();
+    backLayer.addChild(boss);
+
+    scoreLayer = new LSprite();
+    scoreLayer.bitmap = new LBitmap(new LBitmapData(imglist['score-bg']));
+    scoreLayer.bitmap.x = LGlobal.width - scoreLayer.bitmap.getWidth() - 20;
+    scoreLayer.bitmap.y = 180;
+    scoreLayer.addChild(scoreLayer.bitmap);
+    backLayer.addChild(scoreLayer);
+
+    scoreTxt = new LTextField();
+    scoreTxt.x = LGlobal.width - scoreLayer.bitmap.getWidth() + 50;
+    scoreTxt.y = 202;
+    scoreTxt.text = '1559';
+    scoreTxt.size = 30;
+    scoreTxt.color = '#fde78e';
+    scoreTxt.weight = 'bolder';
+    backLayer.addChild(scoreTxt);
+    
+}
+
+function gameInit() {
     backLayer.addEventListener(LEvent.ENTER_FRAME, onframe);
     backLayer.addEventListener(LMouseEvent.MOUSE_DOWN, ondown);
     backLayer.addEventListener(LMouseEvent.MOUSE_MOVE, onmove);
@@ -86,6 +138,7 @@ function gameInit(result) {
 */
 function onframe() {
     player.onframe();
+    boss.onframe();
     var key;
     for (key in bulletLayer.childList) {
         bulletLayer.childList[key].onframe();
@@ -168,7 +221,7 @@ function addEnemy() {
 }
 // 增加法术
 function addMagic() {
-    if (frame2++ < 50) return;
+    if (frame2++ < 300) return;
     frame2 = 0;
     if (fnRand(1, 3) == 1) {
         var bitmapData = new LBitmapData(imglist['magic1']);

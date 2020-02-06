@@ -36,9 +36,19 @@ Bullet.prototype.onframe = function () {
     for(key in enemyLayer.childList){
         plain = enemyLayer.childList[key];
         if(LGlobal.hitTestArc(self,plain)){
-            self.bitmap.bitmapData = new LBitmapData(imglist["remove"]);
-            bulletLayer.removeChild(self);
+            self.bitmap.bitmapData = new LBitmapData(imglist["bomb"]);
             enemyLayer.removeChild(plain);
+            createjs.Sound.play("bomb");
+            setTimeout(() => {
+                bulletLayer.removeChild(self);
+            }, 200);
+        }
+        if(LGlobal.hitTestRect(self,boss)){
+            self.bitmap.bitmapData = new LBitmapData(imglist["bomb"]);
+            createjs.Sound.play("bomb");
+            setTimeout(() => {
+                bulletLayer.removeChild(self);
+            }, 200);
         }
     }
 };
