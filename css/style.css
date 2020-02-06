@@ -102,6 +102,31 @@ em,i,small{font-style: normal;}
 .dialog-context{ font-size: 0.28rem; }
 .dialog-btn{ width: 3.28rem; position: absolute; bottom: 0.55rem; left: 50%; transform: translateX(-50%); display: none;}
 
+/*
+** 活动规则
+**/
+.dialog-rule{position: fixed;z-index: 999;width: 100%;height: 100%;top:0;left: 0;display: none;}
+.dialog-rule-container{position: absolute;width:100%;height:100%;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/rule.png');background-size: cover;}
+.ruleclosebtn{ width: 0.8rem; height: 0.8rem; position: absolute; top: 12.02rem; left: 3.36rem; }
+
+/*
+** 填写个人信息弹框
+**/
+.dialog-form{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: none;}
+.dialog-form-container{position: absolute;width:5.87rem;height:7.94rem;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/dialog-form-bg.png');background-size: cover;}
+.dialog-form-top{
+  width: 3.6rem;
+  margin-top: 0.36rem;
+  margin-left: 1.06rem;
+}
+.formbtn{
+  width: 3.28rem;
+  position: absolute;
+  bottom: 0.69rem;
+  margin-left: 1.29rem;
+}
+.formclosebtn{ width: 0.8rem; height: 0.8rem; position: absolute; left: 2.54rem;bottom:-1.2rem; }
+
 
 /*===============================================*/
 /*===========动画效果=============*/

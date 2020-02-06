@@ -40,6 +40,12 @@ $(function () {
     $('.linkGift').on('touchstart',function(e){
         linkGift()
     })
+    // $('.prize-btn').on('touchstart',function(e){
+    //     showDialog({type:2,tip:'友情提示',text:'222',giftType:2,});
+    // })
+    $('.ruleclosebtn').on('touchstart',function(e){
+        $('.dialog-rule').hide()
+    })
 
 
 
