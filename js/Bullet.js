@@ -3,6 +3,7 @@
  * 子弹类 
  * */
 /******************************************/
+var isOnes = true;
 function Bullet(params) {
     base(this, LSprite, []);
     var self = this;
@@ -50,12 +51,16 @@ Bullet.prototype.onframe = function () {
             createjs.Sound.play("bomb");
             boss.hp -= 0.5;
             if(boss.hp < 0){
-                backLayer.removeAllEventListener();
-                boss.remove();
-                boss.isDie = true;
-                scoreVal += 200;
-                scoreTxt.text = scoreVal;
-                showDialog({type:2,tip:'闯关成功',text:`获得 ${scoreVal} 分与一次抽奖机会Tips：手机钥匙等随时物品也要记得消毒喔~`});
+                if(isOnes){
+                    backLayer.removeAllEventListener();
+                    boss.remove();
+                    boss.isDie = true;
+                    scoreVal += 200;
+                    scoreTxt.text = scoreVal;
+                    showDialog({type:2,tip:'闯关成功',text:`获得 ${scoreVal} 分与一次抽奖机会Tips：手机钥匙等随时物品也要记得消毒喔~`});
+                    clickType = 1;
+                    isOnes = false;
+                }
             }
             setTimeout(() => {
                 bulletLayer.removeChild(self);

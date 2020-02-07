@@ -2,7 +2,19 @@ var preload = new createjs.LoadQueue(); //新建loading对象
 var bgm;//全局音乐对象
 preload.installPlugin(createjs.Sound); //加载音乐插件
 var isOpen = false;
-var isOne = true;
+var isOne = true;//是否加载了一次
+var clickType = 0;//点击类型 1 => 闯关成功，去掉抽奖页面 
+var isEnd = false//活动页面是否结束
+var scoreVal = 0;//分值
+var chanceNum = 1;//今天剩余次数
+var isChallenge = true;//是否挑战过游戏
+var prizeNum = 7;// 1 --> 智能锁
+				 // 2 --> 凉衣机
+				 // 3 --> 凉衣架
+				 // 4 --> 200元
+				 // 5 --> 挂机凉衣架
+				 // 6 --> 现金红包
+				 // 7 --> 谢谢参与
 
 $(function () {
 	//加载图片、音乐
@@ -49,6 +61,7 @@ function Init() {
 	   bgm1.stop(); -> 停止
 	*/
 	if (isOne) {
+		$('.chanceNum').text(chanceNum);
 		$('.loading').fadeOut();
 		$('.guide-bg').fadeIn();
 		setTimeout(() => {

@@ -44,7 +44,7 @@ em,i,small{font-style: normal;}
 **/
 .home{background: url(../img/home-bg.jpg) center center no-repeat;background-size: cover;}
 .surplus{position: absolute;width: 2.63rem;height: 0.5rem;background-color: #dbf0fe;border-radius: 0.2rem;top:0.5rem;left: 0.2rem;display: flex;align-items: center;}
-.surplus2{position: absolute;width: 2.63rem;height: 0.5rem;background-color: #dbf0fe;border-radius: 0.2rem;top:0.5rem;left: 0.2rem;display: flex;align-items: center;}
+.surplus2{position: absolute;width: 3.63rem;height: 0.5rem;background-color: #dbf0fe;border-radius: 0.2rem;top:0.5rem;left: 0.2rem;display: flex;align-items: center;}
 .icon{width: 0.5rem;}
 .surplus span{font-size: 0.24rem;color: #134e90;margin-left: 0.05rem;}
 .surplus2 span{font-size: 0.24rem;color: #134e90;margin-left: 0.05rem;}
@@ -103,10 +103,13 @@ em,i,small{font-style: normal;}
 **/
 .luckDraw{background: url(../img/home-bg.jpg) center center no-repeat;background-size: cover;background-color: #0176d2;}
 .award0{position: absolute;width: 4.83rem;left: 50%;margin-left: -2.415rem;top:0.2rem;}
-.turntable{position: absolute;width: 6.42rem;height: 6.42rem;left: 50%;margin-left: -3.21rem;top:4.2rem;}
-.award1{position: absolute;width: 6.42rem;height: 6.42rem;left: 50%;margin-left: -3.21rem;top:0;transition: 2.5s ease-out all;}
-.award2{position: absolute;width: 1.75rem;left: 50%;margin-left: -0.875rem;top:1.9rem;}
+.turntable{position: absolute;width: 6.6rem;height: 6.6rem;left: 50%;margin-left: -3.3rem;top:3.7rem;}
+.award1{position: absolute;width: 6.6rem;height: 6.6rem;left: 50%;margin-left: -3.3rem;top:0;}
+.award2{position: absolute;width: 1.34rem;left: 50%;margin-left: -0.67rem;top:1.7rem;}
 .award3{position: absolute;width: 6.96rem;left: 50%;margin-left: -3.48rem;top:3.1rem;}
+.dounLuck-banner{position: absolute;width: 6.61rem;left: 50%;margin-left: -3.305rem;top:1rem;}
+.shadow{position: absolute;width: 5.04rem;left: 50%;margin-left: -2.52rem;bottom: -0.5rem;}
+.yao-btn{position: absolute;width: 2.72rem;left: 50%;margin-left: -1.36rem;bottom: 0.2rem;}
 
 /* 
 ** 弹框
@@ -226,7 +229,7 @@ em,i,small{font-style: normal;}
 /*
 ** 活动规则
 **/
-.dialog-rule{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: block;}
+.dialog-rule{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: none;}
 .dialog-rule-container{position: absolute;width:5.87rem;height:9.2rem;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/dialog-form-bg.png');background-size: cover;}
 .dialog-rule-top{
   width: 2.72rem;

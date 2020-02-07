@@ -24,8 +24,4 @@ Boss.prototype.onframe = function(){
     if(self.y >= 300){
         self.y = 300;
     }
-    if(self.isDie){
-        
-    }
-
 }

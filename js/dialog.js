@@ -36,7 +36,17 @@ function linkGift() {
 }
 
 $('.closeDialog').on('touchstart',function(e){
-    $('.dialog').hide()
+    $('.dialog').hide();
+    switch(clickType) {
+        case 1:
+            //闯关成功
+           $('.game').hide();
+           $('.luckDraw').show();
+           break;
+        case 2:
+           break;
+        default:
+   } 
 })
 $('.linkGift').on('touchstart',function(e){
     linkGift()

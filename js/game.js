@@ -1,12 +1,25 @@
 
 $('.start-btn').on('touchstart', function (e) {
-    $('.home').hide();
-    $('.dialog-rule').show();
+    if(isEnd){
+        showDialog({type:2,tip:'活动已结束',text:`感谢关注，请尽快领取个人奖品信息
+        逾期未填写的视为放弃领奖
+        对此，好太太集团有权取消奖品的发放`});
+    }else{
+        if(chanceNum == 0){
+            showDialog({type:2,tip:'友情提示',text:`您今天的“作战”次数已用完
+            分享至朋友圈可多获得一次“作战”机会`});
+        }else{
+            $('.home').hide();
+            $('.dialog-game').show();
+        }
+    }
+    
+    
 });
-$('.ruleclosebtn').on('touchstart',function(e){
+$('.gameclosebtn').on('touchstart',function(e){
     $('.game').show();
-    $('.dialog-rule').hide();
-    init(1000 / 40, "mylegend", 750, 1484, main);
+    $('.dialog-game').hide();
+    init(1000 / 40, "mylegend", 750, 1380, main);
 })
 
 $(function() {
@@ -23,7 +36,7 @@ var mouseStartX, mouseStartY, mouseNowX, mouseNowY;
 var MOVE_STEP = 20;
 var frame = 0, frame2 = 0;
 var imglist = {};
-var scoreVal = 0;
+
 
 /**
  * 子弹类型数组

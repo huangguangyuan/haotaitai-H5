@@ -24,23 +24,71 @@ $(function () {
 		window.scroll(0, 0) // 失焦后强制让页面归位 
 	});
 
-	$('.award2').on('touchstart',function(e){
-		luckDraw(0);
+	$('.award2').on('touchstart', function (e) {
+		luckDraw();
 	})
 
 	// 大转盘抽奖
-	function luckDraw(param){
-		// 1 --> 50元
-		// 2 --> 10元
-		// 3 --> 2元
-		// 4 --> 1元
-		// 5 --> 谢谢参与
-		// 6 --> 100元
-		// 7 --> 88元
-		var num = param || fnRand(1,8);//这里输入需要中奖的数据，默认随机
-		var deg = 1440 + num * 51.4;
-		$('.award1').css({ 'transform': 'rotate('+deg+'deg)' });
+	function luckDraw() {
+		var deg = 1440 + prizeNum * 51.4;
+		$('.award1').css({ 'transform': 'rotate(' + deg + 'deg)','transition':' 2.5s ease-out all' });
+		setTimeout(() => {
+			switch (prizeNum) {
+				case 1:
+					showDialog({ type: 1, tip: '恭喜您，获得二等奖', text: '一套智能锁A71（价值：¥1799.00元）已放入“我的奖品”', giftType: 2 });
+					break;
+				case 2:
+					showDialog({ type: 1, tip: '恭喜您，获得四等奖', text: '一套炫彩简约衣架礼盒（价值：¥158.00元）已放入“我的奖品”', giftType: 4 });
+					break;
+				case 3:
+					showDialog({ type: 1, tip: '恭喜您，获得三等奖', text: '一套落地衣架GW-5823（价值：¥588.00元）已放入“我的奖品”', giftType: 3 });
+					break;
+				case 4:
+					showDialog({ type: 1, tip: '恭喜您，获得五等奖', text: '一张200元通用代金券（价值：¥200.00元）已放入“我的奖品”', giftType: 5 });
+					break;
+				case 5:
+					showDialog({ type: 1, tip: '恭喜您，获得一等奖', text: '一套消毒晾衣机GW-1122BS（价值：¥2399.00元）已放入“我的奖品”', giftType: 1 });
+					break;
+				case 6:
+					showDialog({ type: 1, tip: '恭喜您，获得幸运奖', text: '一个微信红包，金额随机发放关注好太太服务号或微信官方服务消息发送', giftType: 6 });
+					break;
+				default:
+					showDialog({ type: 2, tip: '谢谢参与', text: '感谢关注，每天闯关成功首次分享可获得多一次抽奖机会哦', giftType: 6 });
+			}
+		}, 3000);
 	}
+
+	// 点击立刻领取
+	$('.linkGift').on('touchstart', function (e) {
+		$('.luckDraw').hide();
+		$('.dialog').hide();
+		$('.dialog-form').show();
+	})
+
+
+	// 点击打开活动规则
+	$('.active-ico').click(function () {
+		$('.dialog-rule').fadeIn();
+	});
+	// 点击关闭活动规则
+	$('.ruleclosebtn').click(function () {
+		$('.dialog-rule').fadeOut();
+	});
+
+	// 排行榜
+	$('.ranking-btn').click(function () {
+		if(isChallenge){
+			$('.ranking-list').fadeIn();
+		}else{
+			showDialog({type:2,tip:'温馨提示',text:`暂无排名，赶紧去挑战吧~`});
+		}
+		
+	});
+
+	// 关闭排行榜
+	$('.rankBtn').click(function () {
+		$('.ranking-list').fadeOut();
+	})
 
 
 
