@@ -335,6 +335,11 @@ em,i,small{font-style: normal;}
   border-bottom: 1px solid #fff;
   padding-left: 0.2rem;
 }
+input{
+  background-color: #559cec;
+  border: none;
+  outline: none;
+}
 .formbtn{
   width: 3.28rem;
   position: absolute;
