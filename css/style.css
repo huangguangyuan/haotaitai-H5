@@ -225,7 +225,7 @@ em,i,small{font-style: normal;}
 /*
 ** 活动规则
 **/
-.dialog-rule{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: block;}
+.dialog-rule{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: none;}
 .dialog-rule-container{position: absolute;width:5.87rem;height:9.2rem;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/dialog-form-bg.png');background-size: cover;}
 .dialog-rule-top{
   width: 2.72rem;
@@ -271,7 +271,26 @@ em,i,small{font-style: normal;}
   margin-left: 1.29rem;
 }
 .formclosebtn{ width: 0.8rem; height: 0.8rem; position: absolute; left: 2.54rem;bottom:-1.2rem; }
-
+.winning-list{
+  position: relative;
+  top: 1.2rem;
+  color: #fff;
+  height: 0.53rem;
+  overflow: hidden;
+  width: 1000%;
+}
+.winning-list-item{
+  width: 3.4rem;
+  height: 0.53rem;
+  line-height: 0.53rem;
+  font-size: 0.22rem;
+  background-color: #134e90;
+  border-radius: 0.2rem;
+  opacity: 0.5;
+  text-align: center;
+  float: left;
+  margin-right: 0.54rem;
+}
 
 /*===============================================*/
 /*===========动画效果=============*/
