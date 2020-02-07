@@ -278,9 +278,10 @@ em,i,small{font-style: normal;}
   height: 0.53rem;
   overflow: hidden;
   width: 1000%;
+  animation:mymove 5s infinite;
 }
 .winning-list-item{
-  width: 3.4rem;
+  /* width: 3.4rem; */
   height: 0.53rem;
   line-height: 0.53rem;
   font-size: 0.22rem;
@@ -290,6 +291,11 @@ em,i,small{font-style: normal;}
   text-align: center;
   float: left;
   margin-right: 0.54rem;
+}
+@keyframes mymove
+{
+from {left:0px;}
+to {left:-200px;}
 }
 
 /*===============================================*/
