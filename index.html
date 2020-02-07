@@ -22,6 +22,8 @@
     </script>
     <script src="./js/soundjs-0.6.2.min.js"></script>
     <script src="./js/index_loading.js"></script>
+    <script src="./js/distpicker.js"></script>
+    <script src="./js/distpicker.data.js"></script>
     <script type="text/javascript">
         // window.onload = function(){
         //     document.addEventListener('WeixinJSBridgeReady',function(){
@@ -63,6 +65,14 @@
                 <div class="surplus">
                     <img src="./img/icon.png" alt="" class="icon">
                     <span>今天还剩机会 <em class="chanceNum">5</em> 次</span>
+                </div>
+                <div class="winning-list" id="scroll_div">
+                    <div id="scroll_begin">
+                        <div class="winning-list-item">xxxx获得111杀菌智能晾衣架一台</div>
+                        <div class="winning-list-item">xxxx获得22杀菌智能晾衣架一台</div>
+                        <div class="winning-list-item">xxxx获得222杀菌智能晾衣架一台</div>
+                    </div>
+                    <div id="scroll_end"></div>
                 </div>
                 <img src="./img/active-ico.png" alt="" class="active-ico">
                 <img src="./img/banner.png" alt="" class="banner">
@@ -232,9 +242,9 @@
         <!-- 我的礼品页面 -->
         <div class="gift pageSytle">
             <div class="innerDiv">
-                <div class="gift-score">
+                <!-- <div class="gift-score">
                     <span class="gift-score-text">100</span>
-                </div>
+                </div> -->
                 <div class="gift-main">
                     <div class="gift-tab">
                         <img src="./img/gift2.png" alt="" class="gift-tab-img">
@@ -274,7 +284,16 @@
                                 <p><span>兑换积分：</span><span>1000</span></p>
                                 <p><span>剩余数量：</span><span>10</span></p>
                             </div>
-                            <img src="./img/gift9.png" alt="" class="gift-item-btn">
+                            <button class="gift-item-btn giftshow">查看</button>
+                        </div>
+                        <div class="gift-item">
+                            <img src="./img/gift5.png" alt="" class="gift-item-img">
+                            <div class="gift-item-text2">
+                                <p>卡通充电宝</p>
+                                <p><span>兑换积分：</span><span>1000</span></p>
+                                <p><span>剩余数量：</span><span>10</span></p>
+                            </div>
+                            <button class="gift-item-btn giftget">立即领取</button>
                         </div>
                     </div>
                     <div class="gift-btn">
@@ -356,11 +375,191 @@
         <div class="dialog-share-container">
         </div>
     </div>
+    <!-- 红包弹框 -->
+    <div class="dialog-red">
+        <div class="dialog-red-container">
+            <img src="./img/redback.png" alt="" class="redclosebtn">
+        </div>
+    </div>
+    <!-- 200元代金劵弹框 -->
+    <div class="dialog-money">
+        <div class="dialog-money-container">
+            <img src="./img/moneyuse.png" alt="" class="moneyusebtn">
+            <img src="./img/redback.png" alt="" class="moneyclosebtn">
+        </div>
+    </div>
+    <!-- 铝合金衣架礼盒 -->
+    <div class="dialog-my-cloth">
+        <div class="dialog-my-cloth-container">
+            <div>
+                <img src="./img/my-2.png" alt="" class="dialog-my-top">
+            </div>
+            <div class="dialog-my-text">
+                <p class="dialog-my-tip">铝合金衣架礼盒</p>
+                <p class="dialog-my-context">图片仅供参考，以收到的实物为准</p>
+                <img class="dialog-my-info" src="./img/my-info.png" alt="">
+            </div>
+            <div style="padding:0 0.4rem;">
+                <div class="form-my-info">
+                    <span>姓名：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>手机：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>城市：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>地址：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>留言：</span>11111
+                </div>
+            </div>
+            <!-- 返回按钮 -->
+            <img src="./img/redback.png" alt="" class="dialog-my-btn dialog-my-btn-1">
+        </div>
+    </div>
+    <!-- 铝合金落地衣架 -->
+    <div class="dialog-my-cloth-2">
+        <div class="dialog-my-cloth-container">
+            <div>
+                <img src="./img/my-1.png" alt="" class="dialog-my-top-2">
+            </div>
+            <div class="dialog-my-text">
+                <p class="dialog-my-tip">铝合金落地衣架</p>
+                <p class="dialog-my-context">图片仅供参考，以收到的实物为准</p>
+                <img class="dialog-my-info" src="./img/my-info.png" alt="">
+            </div>
+            <div style="padding:0 0.4rem;">
+                <div class="form-my-info">
+                    <span>姓名：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>手机：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>城市：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>地址：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>留言：</span>11111
+                </div>
+            </div>
+            <!-- 返回按钮 -->
+            <img src="./img/redback.png" alt="" class="dialog-my-btn dialog-my-btn-2">
+        </div>
+    </div>
+    <!-- 智能锁A71（不含安装） -->
+    <div class="dialog-my-cloth-3">
+        <div class="dialog-my-cloth-container-2">
+            <div>
+                <img src="./img/my-4.png" alt="" class="dialog-my-top-4">
+            </div>
+            <div class="dialog-my-text">
+                <p class="dialog-my-tip">智能锁A71（不含安装）</p>
+                <p class="dialog-my-context">奖品不含安装，图片仅供参考</p>
+                <p class="dialog-my-context">以收到的实物为准</p>
+                <img class="dialog-my-info" src="./img/my-info.png" alt="">
+            </div>
+            <div style="padding:0 0.4rem;">
+                <div class="form-my-info">
+                    <span>姓名：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>手机：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>城市：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>地址：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>留言：</span>11111
+                </div>
+            </div>
+            <!-- 返回按钮 -->
+            <img src="./img/redback.png" alt="" class="dialog-my-btn dialog-my-btn-3">
+        </div>
+    </div>
+    <!-- 消毒晾衣机GW-1122BS -->
+    <div class="dialog-my-cloth-4">
+        <div class="dialog-my-cloth-container-2">
+            <div>
+                <img src="./img/my-3.png" alt="" class="dialog-my-top">
+            </div>
+            <div class="dialog-my-text">
+                <p class="dialog-my-tip">消毒晾衣机GW-1122BS</p>
+                <p class="dialog-my-context">奖品不含安装，图片仅供参考</p>
+                <p class="dialog-my-context">以收到的实物为准</p>
+                <img class="dialog-my-info" src="./img/my-info.png" alt="">
+            </div>
+            <div style="padding:0 0.4rem;">
+                <div class="form-my-info">
+                    <span>姓名：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>手机：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>城市：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>地址：</span>11111
+                </div>
+                <div class="form-my-info">
+                    <span>留言：</span>11111
+                </div>
+            </div>
+            <!-- 返回按钮 -->
+            <img src="./img/redback.png" alt="" class="dialog-my-btn dialog-my-btn-3">
+        </div>
+    </div>
     <!-- 填写个人信息弹框 -->
     <div class="dialog-form">
         <div class="dialog-form-container">
             <div>
                 <img src="./img/dialog-form.png" alt="" class="dialog-form-top">
+            </div>
+            <div style="padding:0 0.4rem;">
+                <form action="">
+                    <div class="dialog-form-my-info">
+                        <span>姓名：</span>
+                        <input type="text" id="username" placeholder="请输入您的姓名">
+                    </div>
+                    <div class="dialog-form-my-info">
+                        <span>手机：</span>
+                        <input type="number" id="phone" placeholder="请输入您的手机号码">
+                    </div>
+                    <div class="dialog-form-my-info">
+                        <span>城市：</span>
+                        <select>
+                            <option>选择省</option>
+                        </select>
+                        <select>
+                            <option>市</option>
+                        </select>
+                        <select>
+                            <option>区</option>
+                        </select>
+                        <!-- <div style="display: inline-block;" data-toggle="distpicker">
+                            <select data-province="---- 选择省 ----"></select>
+                            <select data-city="---- 选择市 ----"></select>
+                            <select data-district="---- 选择区 ----"></select>
+                          </div> -->
+                    </div>
+                    <div class="dialog-form-my-info">
+                        <span>地址：</span>
+                        <input type="text" id="address" placeholder="请输入详细地址">
+                    </div>
+                    <div class="dialog-form-my-info">
+                        <span>留言：</span>
+                        <input type="text" id="info" placeholder="请输入120字的内容">
+                    </div>
+            </form>
             </div>
             <img src="./img/dialog-form-btn.png" alt="" class="formbtn">
             <img src="./img/colse.png" alt="" class="formclosebtn">
@@ -376,6 +575,9 @@
     <script type="text/javascript" src='./js/main.js'></script>
     <script type="text/javascript" src='./js/dialog.js'></script>
     <script type="text/javascript" src='./js/gift.js'></script>
+    <script>
+        //  $("#distpicker").distpicker();
+    </script>
 </body>
 
 </html>
