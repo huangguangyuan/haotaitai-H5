@@ -50,6 +50,12 @@ $(function () {
     $('.ruleclosebtn').on('touchstart',function(e){
         $('.dialog-rule').hide()
     })
+    $('.gameclosebtn').on('touchstart',function(e){
+        $('.dialog-game').hide()
+    })
+    $('.formclosebtn').on('touchstart',function(e){
+        $('.dialog-form').hide()
+    })
 
 
 
