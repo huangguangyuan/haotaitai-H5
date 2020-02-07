@@ -55,6 +55,7 @@ $(function () {
 				default:
 					showDialog({ type: 2, tip: '谢谢参与', text: '感谢关注，每天闯关成功首次分享可获得多一次抽奖机会哦', giftType: 6 });
 			}
+			$('.award1').css({ 'transform': 'rotate(' + 0 + 'deg)','transition':' 0s ease-out all' });
 		}, 3000);
 	}
 
