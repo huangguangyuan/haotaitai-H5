@@ -60,6 +60,21 @@ Magic2.prototype.skill = function(){
         },3000);
     }
 }
+// 清屏幕
+function Magic3(bitmapData){
+    base(this,Magic,[bitmapData]);
+    var self = this;
+}
+
+Magic3.prototype.skill = function(){
+    var self = this;
+    if(LGlobal.hitTestArc(self,player)){
+        scoreVal += enemyLayer.childList.length*5;
+        scoreTxt.text = scoreVal;
+        magicLayer.removeChild(self);
+        enemyLayer.removeAllChild();
+    }
+}
 
 
 

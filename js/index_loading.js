@@ -50,13 +50,16 @@ function Init() {
 	*/
 	if (isOne) {
 		$('.loading').fadeOut();
-		$('.home').fadeIn();
+		$('.guide-bg').fadeIn();
+		setTimeout(() => {
+			$('.guide-bg').fadeOut();
+			$('.home').fadeIn();
+		}, 3000);
 		isOne = false;
 	}
 
 
 }
-
 
 function isWeixin() {
 	var ua = navigator.userAgent.toLowerCase();

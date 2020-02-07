@@ -1,9 +1,13 @@
 
 $('.start-btn').on('touchstart', function (e) {
     $('.home').hide();
-    $('.game').show();
-    init(1000 / 40, "mylegend", 750, 1484, main);
+    $('.dialog-rule').show();
 });
+$('.ruleclosebtn').on('touchstart',function(e){
+    $('.game').show();
+    $('.dialog-rule').hide();
+    init(1000 / 40, "mylegend", 750, 1484, main);
+})
 
 $(function() {
 	createjs.Sound.alternateExtensions = ["mp3"];
@@ -19,6 +23,7 @@ var mouseStartX, mouseStartY, mouseNowX, mouseNowY;
 var MOVE_STEP = 20;
 var frame = 0, frame2 = 0;
 var imglist = {};
+var scoreVal = 0;
 
 /**
  * 子弹类型数组
@@ -44,7 +49,9 @@ var imgData = [
     { name: "remove", path: "./img/remove.png" },
     { name: "magic1", path: "./img/magic1.png" },
     { name: "magic2", path: "./img/magic2.png" },
+    { name: "magic3", path: "./img/magic3.png" },
     { name: "bomb", path: "./img/bomb.png" },
+    { name: "bomb2", path: "./img/bomb2.png" },
     { name: "score-bg", path: "./img/score-bg.png" },
     { name: "boss", path: "./img/boss.png" },
 ]
@@ -117,9 +124,9 @@ function readyFn(result){
     backLayer.addChild(scoreLayer);
 
     scoreTxt = new LTextField();
-    scoreTxt.x = LGlobal.width - scoreLayer.bitmap.getWidth() + 50;
+    scoreTxt.x = LGlobal.width - scoreLayer.bitmap.getWidth() + 60;
     scoreTxt.y = 202;
-    scoreTxt.text = '1559';
+    scoreTxt.text = scoreVal;
     scoreTxt.size = 30;
     scoreTxt.color = '#fde78e';
     scoreTxt.weight = 'bolder';
@@ -138,7 +145,9 @@ function gameInit() {
 */
 function onframe() {
     player.onframe();
-    boss.onframe();
+    if(scoreVal >= 300){
+        boss.onframe();
+    }
     var key;
     for (key in bulletLayer.childList) {
         bulletLayer.childList[key].onframe();
@@ -213,22 +222,25 @@ function onup(event) {
 }
 // 增加敌人
 function addEnemy() {
-    if (frame++ < 20) return;
+    if (frame++ < 10) return;
     frame = 0;
-    var bitmapData = new LBitmapData(imglist['enemy' + fnRand(1, 4)]);
-    var enemy = new Enemy(bitmapData);
+    var enemy = new Enemy();
     enemyLayer.addChild(enemy);
 }
 // 增加法术
 function addMagic() {
     if (frame2++ < 300) return;
     frame2 = 0;
-    if (fnRand(1, 3) == 1) {
+    var type = fnRand(1, 4);
+    if (type == 1) {
         var bitmapData = new LBitmapData(imglist['magic1']);
         var magic = new Magic1(bitmapData);
-    }else{
+    }else if(type == 2){
         var bitmapData = new LBitmapData(imglist['magic2']);
         var magic = new Magic2(bitmapData);
+    }else{
+        var bitmapData = new LBitmapData(imglist['magic3']);
+        var magic = new Magic3(bitmapData);
     }
 
     magicLayer.addChild(magic);

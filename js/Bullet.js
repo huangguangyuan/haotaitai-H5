@@ -42,10 +42,21 @@ Bullet.prototype.onframe = function () {
             setTimeout(() => {
                 bulletLayer.removeChild(self);
             }, 200);
+            scoreVal += 5;
+            scoreTxt.text = scoreVal;
         }
         if(LGlobal.hitTestRect(self,boss)){
-            self.bitmap.bitmapData = new LBitmapData(imglist["bomb"]);
+            self.bitmap.bitmapData = new LBitmapData(imglist["bomb2"]);
             createjs.Sound.play("bomb");
+            boss.hp -= 0.5;
+            if(boss.hp < 0){
+                backLayer.removeAllEventListener();
+                boss.remove();
+                boss.isDie = true;
+                scoreVal += 200;
+                scoreTxt.text = scoreVal;
+                showDialog({type:2,tip:'闯关成功',text:`获得 ${scoreVal} 分与一次抽奖机会Tips：手机钥匙等随时物品也要记得消毒喔~`});
+            }
             setTimeout(() => {
                 bulletLayer.removeChild(self);
             }, 200);

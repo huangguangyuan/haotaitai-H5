@@ -4,12 +4,13 @@
 function Boss(){
     base(this,LSprite,[]);
     var self = this;
-    self.y = -100;
+    self.y = -150;
     self.x = 0;
-    self.hp = 100;
+    self.hp = 600;
     self.speed = 5;
+    self.isDie = false;
     self.bitmap = new LBitmap(new LBitmapData(imglist['boss']));
-	self.addChild(self.bitmap);
+    self.addChild(self.bitmap);
 }
 Boss.prototype.onframe = function(){
     var self = this;
@@ -22,6 +23,9 @@ Boss.prototype.onframe = function(){
     }
     if(self.y >= 300){
         self.y = 300;
+    }
+    if(self.isDie){
+        
     }
 
 }
