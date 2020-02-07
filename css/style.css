@@ -154,7 +154,7 @@ em,i,small{font-style: normal;}
 .gift-bg{
   text-align: center;
   width: 6.53rem;
-  height: 8.61rem;
+  height: 9.12rem;
   background-image: url('../img/gift3.png');
   background-size: cover;
   margin: 0 auto;
@@ -164,15 +164,15 @@ em,i,small{font-style: normal;}
   display: none;
 }
 .gift-item{
-  background-color: #fff;
   margin: 0.2rem;
-  border-radius: 0.2rem;
-  height: 2rem;
   position: relative;
+	height: 1.49rem;
+	background-color: rgba(192, 222, 255, 0.4);
+  border-radius: 0.11rem;
 }
 .gift-item-img{
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 1.2rem;
+  height: 1.2rem;
   position: absolute;
   left: 0.2rem;
   top: 0.2rem;
@@ -181,24 +181,33 @@ em,i,small{font-style: normal;}
   font-size: 0.28rem;
   padding-left: 2.2rem;
   text-align: left;
-  padding-top: 0.8rem;
+  padding-top: 0.6rem;
+  color: #fff;
 }
 .gift-item-text2{
   font-size: 0.28rem;
-  padding-left: 2.2rem;
+  padding-left: 2rem;
   text-align: left;
-  padding-top: 0.4rem;
+  padding-top: 0.2rem;
+  color: #fff;
 }
 .gift-item-btn{
-  width: 1.33rem;
   position: absolute;
   right: 0.2rem;
   bottom: 0.2rem;
+  width: 1rem;
+  height: 0.4rem;
+  border: none;
+  font-size: 0.18rem;
+  color: #fff;
+	background-color: rgba(40, 105, 178, 1);
+  border-radius: 0.06rem;
+  /* padding: 0 0.14rem; */
 }
 .gift-enpty{
   display: none;
 }
-.gift-enpty-img{ width: 3.85rem;margin-top: 2rem; }
+.gift-enpty-img{ width: 4.19rem;margin-top: 2rem; }
 .gift-tab-bg{
   /* width: 6.53rem;
   height: 8.61rem; */
@@ -255,14 +264,72 @@ em,i,small{font-style: normal;}
 .dialog-share-container{position: absolute;width:100%;height:100%;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/share.png');background-size: cover;}
 
 /*
+** 红包弹框
+**/
+.dialog-red{position: fixed;z-index: 999;width: 100%;height: 100%;top:0;left: 0;background-color: rgba(0,0,0,0.8);display: none;}
+.dialog-red-container{position: absolute;width:100%;height:100%;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/red.png');background-size: cover;}
+.redclosebtn{ width: 3.28rem; position: absolute; left: 50%; margin-left: -1.64rem; margin-top: 9.89rem; }
+
+/*
+** 200元代金劵弹框
+**/
+.dialog-money{position: fixed;z-index: 999;width: 100%;height: 100%;top:0;left: 0;background-color: rgba(0,0,0,0.8);display: none;}
+.dialog-money-container{position: absolute;width:100%;height:100%;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/money.png');background-size: cover;}
+.moneyusebtn{ width: 3.28rem; position: absolute; left: 50%; margin-left: -1.64rem; margin-top: 9.89rem; }
+.moneyclosebtn{ width: 3.28rem; position: absolute; left: 50%; margin-left: -1.64rem; margin-top: 10.89rem; }
+
+/* 
+** 礼盒弹框
+**/
+.dialog-my-cloth{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: none;}
+.dialog-my-cloth-2{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: none;}
+.dialog-my-cloth-3{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: none;}
+.dialog-my-cloth-4{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: none;}
+.dialog-my-cloth-container{position: absolute;width:5.87rem;height:8.79rem;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/my-bg.png');background-size: cover;}
+.dialog-my-cloth-container-2{position: absolute;width:5.87rem;height:9.3rem;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/my-bg2.png');background-size: cover;}
+.dialog-my-top{ width: 4.8rem; position: absolute; top: -0.5rem; left: 50%; transform: translateX(-50%); }
+.dialog-my-top-2{ width: 4.8rem; position: absolute; top: -1rem; left: 50%; transform: translateX(-50%); }
+.dialog-my-top-4{ width: 3.7rem; position: absolute; top: -1.2rem; left: 50%; transform: translateX(-50%); }
+.dialog-my-text{ padding-top:1.32rem;color:#fff;text-align: center;}
+.dialog-my-tip{ font-size: 0.42rem;}
+.dialog-my-context{ font-size: 0.28rem; }
+.dialog-my-info{width: 3.7rem;}
+.form-my-info{
+  height: 0.8rem;
+  line-height: 0.8rem;
+  color: #fff;
+  font-size: 0.28rem;
+  border-bottom: 1px solid #fff;
+  padding-left: 0.2rem;
+}
+.dialog-my-btn{
+  width: 3.28rem;
+  position: absolute;
+  bottom: -1.2rem;
+  left: 50%; 
+  transform: translateX(-50%);
+
+}
+/* .dialog-my-btn{ width: 3.28rem; position: absolute; top: 0; left: 50%; transform: translateX(-50%); display: none;} */
+
+
+/*
 ** 填写个人信息弹框
 **/
-.dialog-form{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: none;}
+.dialog-form{position: fixed;z-index: 999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.8);top:0;left: 0;display: block;}
 .dialog-form-container{position: absolute;width:5.87rem;height:9.2rem;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/dialog-form-bg.png');background-size: cover;}
 .dialog-form-top{
   width: 3.6rem;
   margin-top: 0.87rem;
   margin-left: 1.06rem;
+}
+.dialog-form-my-info{
+  height: 1rem;
+  line-height: 1rem;
+  color: #fff;
+  font-size: 0.28rem;
+  border-bottom: 1px solid #fff;
+  padding-left: 0.2rem;
 }
 .formbtn{
   width: 3.28rem;
