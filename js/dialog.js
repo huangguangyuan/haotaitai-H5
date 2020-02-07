@@ -1,5 +1,9 @@
 $(function () {
     // showDialog({type:2,tip:'友情提示',text:'222',giftType:2,});
+    // type int 1-'立即领取' 2-'我知道了'
+    // tip  string  提示标题
+    // text string 内容
+    // giftType int 礼物类型，1一等奖
 	// 点击缩放
 	function showDialog(obj) {
         var giftType = {
