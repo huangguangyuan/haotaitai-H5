@@ -3,7 +3,7 @@ $(function () {
         $('.home').hide();
         $('.gift').show();
         // 点击我的奖品请求
-        $.get('http://bardiss.hengdikeji.com/index.php/index/activity/myPrize', function (data, status) {
+        $.get('http://hotata.hengdikeji.com/index.php/index/activity/myPrize', function (data, status) {
             if (data.status === 1 && data.data.length) {
                 $('.gift-enpty').hide()
             } else {
@@ -21,7 +21,7 @@ $(function () {
         $('.gift-tab-img').attr("src", './img/gift8.png');
         $('.gift-bg-1').hide();
         $('.gift-bg-2').show();
-        $.get('http://bardiss.hengdikeji.com/index.php/index/activity/PrizeList', function (data, status) {
+        $.get('http://hotata.hengdikeji.com/index.php/index/activity/PrizeList', function (data, status) {
             if (data.status === 1 && data.data.length) {
                 $('.gifttext1').text(data.data[0].number)
                 $('.gifttext2').text(data.data[1].number)

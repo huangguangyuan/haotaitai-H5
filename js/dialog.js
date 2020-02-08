@@ -6,11 +6,11 @@
 // 点击缩放
 function showDialog(obj) {
     var giftType = {
-        1: './img/1.png',
-        2: './img/2.png',
-        3: './img/3.png',
-        4: './img/4.png',
-        5: './img/5.png',
+        1: '/static/index/img/1.png',
+        2: '/static/index/img/2.png',
+        3: '/static/index/img/3.png',
+        4: '/static/index/img/4.png',
+        5: '/static/index/img/5.png',
     }
     if (obj.type) {
         $('.dialog').show()
@@ -27,7 +27,7 @@ function showDialog(obj) {
     if (obj.giftType && giftType[obj.giftType]) {
         $(".dialog-top").attr("src", giftType[obj.giftType]);
     } else {
-        $(".dialog-top").attr("src", './img/dialog-top.png');
+        $(".dialog-top").attr("src", '/static/index/img/dialog-top.png');
     }
 
 }
@@ -42,7 +42,7 @@ $('.closeDialog').on('touchstart', function (e) {
             // 完成游戏后提交 —— 闯关失败
             $.ajax({
                 type: 'POST',
-                url: 'http://bardiss.hengdikeji.com/index.php/index/activity/sub',
+                url: 'http://hotata.hengdikeji.com/index.php/index/activity/sub',
                 dataType: 'json',
                 data: { score: scoreVal, status: 0 },
                 success: function (data) {
@@ -71,7 +71,7 @@ $('.closeDialog').on('touchstart', function (e) {
             //闯关成功
             $.ajax({
                 type: 'POST',
-                url: 'http://bardiss.hengdikeji.com/index.php/index/activity/sub',
+                url: 'http://hotata.hengdikeji.com/index.php/index/activity/sub',
                 dataType: 'json',
                 data: { score: scoreVal, status: 1 },
                 success: function (data) {

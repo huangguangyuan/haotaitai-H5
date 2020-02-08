@@ -21,7 +21,7 @@ $(function () {
 	//加载图片、音乐
 
 	// preload.loadManifest(['./img/arrow.png',{id:"bgm", src:"./music/bgm.mp3"}]);
-	preload.loadManifest(['./img/arrow.png', './img/yue.png', './img/yue2.png']);
+	preload.loadManifest(['/static/index/img/arrow.png', '/static/index/img/yue.png', '/static/index/img/yue2.png', '/static/index/img/1.png', '/static/index/img/2.png', '/static/index/img/3.png', '/static/index/img/4.png', '/static/index/img/5.png', '/static/index/img/6.png', '/static/index/img/a.png', '/static/index/img/active-ico.png', '/static/index/img/award.png', '/static/index/img/award1.png', '/static/index/img/award2.png', '/static/index/img/b.png', '/static/index/img/banner.png', '/static/index/img/banner2.png', '/static/index/img/bomb.png', '/static/index/img/bomb2.png', '/static/index/img/boss.png', '/static/index/img/bullet.png', '/static/index/img/bullet2.png', '/static/index/img/c.png', '/static/index/img/d.png', '/static/index/img/gift1.png', '/static/index/img/gift2.png', '/static/index/img/gift3.png', '/static/index/img/gift4.png', '/static/index/img/gift5.png', '/static/index/img/gift6.png', '/static/index/img/gift7.png', '/static/index/img/gift7.png', '/static/index/img/gift9.png', '/static/index/img/gift10.png', '/static/index/img/gift11.png', '/static/index/img/gift12.png', '/static/index/img/guide-img1.png', '/static/index/img/guide-img2.png', '/static/index/img/guide-img3.png', '/static/index/img/gback.png']);
 
 	//加载过程执行
 	preload.on("progress", loadProgress);
@@ -31,13 +31,15 @@ $(function () {
 	$('.mus').click(function () {
 		if (isOpen) {
 			// 播放音乐
-			$('.mus').attr('src', './img/yue.png');
+			$('.mus').attr('src', '/static/index/img/yue.png');
 			$('.mus').addClass('rotate');
+			bgm.play();
 			isOpen = false;
 		} else {
 			// 关闭音乐
-			$('.mus').attr('src', './img/yue2.png');
+			$('.mus').attr('src', '/static/index/img/yue2.png');
 			$('.mus').removeClass('rotate');
+			bgm.paused = true;
 			isOpen = true;
 		}
 	});

@@ -27,9 +27,9 @@ $('.gameclosebtn').on('touchstart',function(e){
 
 $(function() {
 	createjs.Sound.alternateExtensions = ["mp3"];
-    createjs.Sound.registerSound("./music/zero.wav", "zero"); 
-    createjs.Sound.registerSound("./music/three.wav", "three"); 
-    createjs.Sound.registerSound("./music/bomb.mp3", "bomb"); 
+    createjs.Sound.registerSound("/static/index/music/zero.wav", "zero"); 
+    createjs.Sound.registerSound("/static/index/music/three.wav", "three"); 
+    createjs.Sound.registerSound("/static/index/music/bomb.mp3", "bomb"); 
 });
 
 var loadingLayer, backLayer, gameLayer, bulletLayer, enemyLayer, bgLayer, magicLayer;
@@ -46,8 +46,8 @@ var imglist = {};
  * 【开始角度，增加角度，子弹速度，角度加速度，子弹总数，发动频率，枪口旋转】
  * */
 var bulletList = new Array(
-    { startAngle: -90, angle: 20, step: 3, speed: 40, count: 1 },//1发
-    { startAngle: -110, angle: 20, step: 3, speed: 40, count: 3 },//3发
+    { startAngle: -90, angle: 20, step: 10, speed: 15, count: 1 },//1发
+    { startAngle: -110, angle: 20, step: 10, speed: 15, count: 3 },//3发
     { startAngle: -40, angle: 20, step: 10, speed: 15, count: 5 },//5发
     { startAngle: 0, angle: 20, step: 10, speed: 15, count: 18 },//环发
     { startAngle: 180, angle: 20, step: 50, speed: 15, count: 1 },//1发
@@ -55,21 +55,21 @@ var bulletList = new Array(
     { startAngle: 140, angle: 20, step: 50, speed: 15, count: 5 }//5发
 );
 var imgData = [
-    { name: "game-bg", path: "./img/game-bg.jpg" },
-    { name: "player", path: "./img/player.png" },
-    { name: "enemy1", path: "./img/enemy1.png" },
-    { name: "enemy2", path: "./img/enemy2.png" },
-    { name: "enemy3", path: "./img/enemy3.png" },
-    { name: "bullet", path: "./img/bullet.png" },
-    { name: "bullet2", path: "./img/bullet2.png" },
-    { name: "remove", path: "./img/remove.png" },
-    { name: "magic1", path: "./img/magic1.png" },
-    { name: "magic2", path: "./img/magic2.png" },
-    { name: "magic3", path: "./img/magic3.png" },
-    { name: "bomb", path: "./img/bomb.png" },
-    { name: "bomb2", path: "./img/bomb2.png" },
-    { name: "score-bg", path: "./img/score-bg.png" },
-    { name: "boss", path: "./img/boss.png" },
+    { name: "game-bg", path: "/static/index/img/game-bg.jpg" },
+    { name: "player", path: "/static/index/img/player.png" },
+    { name: "enemy1", path: "/static/index/img/enemy1.png" },
+    { name: "enemy2", path: "/static/index/img/enemy2.png" },
+    { name: "enemy3", path: "/static/index/img/enemy3.png" },
+    { name: "bullet", path: "/static/index/img/bullet.png" },
+    { name: "bullet2", path: "/static/index/img/bullet2.png" },
+    { name: "remove", path: "/static/index/img/remove.png" },
+    { name: "magic1", path: "/static/index/img/magic1.png" },
+    { name: "magic2", path: "/static/index/img/magic2.png" },
+    { name: "magic3", path: "/static/index/img/magic3.png" },
+    { name: "bomb", path: "/static/index/img/bomb.png" },
+    { name: "bomb2", path: "/static/index/img/bomb2.png" },
+    { name: "score-bg", path: "/static/index/img/score-bg.png" },
+    { name: "boss", path: "/static/index/img/boss.png" },
 ]
 function main() {
     LGlobal.stageScale = LStageScaleMode.EXACT_FIT; //设置全屏变量
@@ -151,6 +151,8 @@ function readyFn(result){
 }
 
 function gameInit() {
+    
+
     backLayer.addEventListener(LEvent.ENTER_FRAME, onframe);
     backLayer.addEventListener(LMouseEvent.MOUSE_DOWN, ondown);
     backLayer.addEventListener(LMouseEvent.MOUSE_MOVE, onmove);
@@ -238,7 +240,7 @@ function onup(event) {
 }
 // 增加敌人
 function addEnemy() {
-    if (frame++ < 5) return;
+    if (frame++ < 10) return;
     frame = 0;
     var enemy = new Enemy();
     enemyLayer.addChild(enemy);
