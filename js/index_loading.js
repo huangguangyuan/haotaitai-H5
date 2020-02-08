@@ -3,7 +3,7 @@ var bgm;//全局音乐对象
 preload.installPlugin(createjs.Sound); //加载音乐插件
 var isOpen = false;
 var isOne = true;//是否加载了一次
-var clickType = 0;//点击类型 1 => 闯关成功，去掉抽奖页面 
+var clickType = 2;//点击类型0 =>闯关失败 1 => 闯关成功，去掉抽奖页面 
 var isEnd = false//活动页面是否结束
 var scoreVal = 0;//分值
 var chanceNum = 1;//今天剩余次数
