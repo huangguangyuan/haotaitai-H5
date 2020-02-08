@@ -165,11 +165,11 @@ $(function () {
 
 						data.data.list.forEach(n => {
 							if (n.num === 1) {
-								html += ` <li> <div class="left"> <img src="./img/ico-1.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
+								html += ` <li> <div class="left"> <img src="__ANION__/img/ico-1.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
 							} else if (n.num === 2) {
-								html += ` <li> <div class="left"> <img src="./img/ico-2.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
+								html += ` <li> <div class="left"> <img src="__ANION__/img/ico-2.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
 							} else if (n.num === 3) {
-								html += ` <li> <div class="left"> <img src="./img/ico-3.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
+								html += ` <li> <div class="left"> <img src="__ANION__/img/ico-3.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
 							} else {
 								html += ` <li> <div class="left"> ${n.num} </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
 							}
