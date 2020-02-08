@@ -35,25 +35,25 @@ $(function () {
 		setTimeout(() => {
 			switch (prizeNum) {
 				case 1:
-					showDialog({ type: 1, tip: '恭喜您，获得二等奖', text: '一套智能锁A71（价值：¥1799.00元）已放入“我的奖品”', giftType: 2 });
+					showDialog({ type: 1, tip: '恭喜您，获得二等奖', text: '<p>一套智能锁A71</p><p>（价值：¥1799.00元）</p><p>已放入“我的奖品”</p>', giftType: 2 });
 					break;
 				case 2:
-					showDialog({ type: 1, tip: '恭喜您，获得四等奖', text: '一套炫彩简约衣架礼盒（价值：¥158.00元）已放入“我的奖品”', giftType: 4 });
+					showDialog({ type: 1, tip: '恭喜您，获得四等奖', text: '<p>一套炫彩简约衣架礼盒</p><p>（价值：¥158.00元）</p><p>已放入“我的奖品”</p>', giftType: 4 });
 					break;
 				case 3:
-					showDialog({ type: 1, tip: '恭喜您，获得三等奖', text: '一套落地衣架GW-5823（价值：¥588.00元）已放入“我的奖品”', giftType: 3 });
+					showDialog({ type: 1, tip: '恭喜您，获得三等奖', text: '<p>一套落地衣架GW-5823</p><p>（价值：¥588.00元）</p><p>已放入“我的奖品”</p>', giftType: 3 });
 					break;
 				case 4:
-					showDialog({ type: 1, tip: '恭喜您，获得五等奖', text: '一张200元通用代金券（价值：¥200.00元）已放入“我的奖品”', giftType: 5 });
+					showDialog({ type: 1, tip: '恭喜您，获得五等奖', text: '<p>一张200元通用代金券</p><p>（价值：¥200.00元）</p><p>已放入“我的奖品”</p>', giftType: 5 });
 					break;
 				case 5:
-					showDialog({ type: 1, tip: '恭喜您，获得一等奖', text: '一套消毒晾衣机GW-1122BS（价值：¥2399.00元）已放入“我的奖品”', giftType: 1 });
+					showDialog({ type: 1, tip: '恭喜您，获得一等奖', text: '<p>一套消毒晾衣机GW-1122BS</p><p>（价值：¥2399.00元）</p><p>已放入“我的奖品”</p>', giftType: 1 });
 					break;
 				case 6:
-					showDialog({ type: 1, tip: '恭喜您，获得幸运奖', text: '一个微信红包，金额随机发放关注好太太服务号或微信官方服务消息发送', giftType: 6 });
+					showDialog({ type: 1, tip: '恭喜您，获得幸运奖', text: '<p>一个微信红包，金额随机发放</p><p>关注好太太服务号</p><p>或微信官方服务消息发送</p>', giftType: 6 });
 					break;
 				default:
-					showDialog({ type: 2, tip: '谢谢参与', text: '感谢关注，每天闯关成功首次分享可获得多一次抽奖机会哦', giftType: 6 });
+					showDialog({ type: 2, tip: '谢谢参与', text: '<p>感谢关注，每天闯关成功首次分享</p><p>可获得多一次抽奖机会哦</p>', giftType: 6 });
 			}
 			$('.award1').css({ 'transform': 'rotate(' + 0 + 'deg)','transition':' 0s ease-out all' });
 		}, 3000);

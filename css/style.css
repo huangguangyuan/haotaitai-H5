@@ -168,19 +168,24 @@ em,i,small{font-style: normal;}
 .gift-bg-2{
   display: none;
 }
+.gift-list{
+  background-color: #fff;
+  margin: 0.2rem;
+  border-radius: 0.11rem;
+}
 .gift-item{
   margin: 0.2rem;
   position: relative;
-	height: 1.49rem;
-	background-color: rgba(192, 222, 255, 0.4);
+	height: 1.79rem;
+	background-color: #fff;
   border-radius: 0.11rem;
 }
 .gift-item-img{
   width: 1.2rem;
-  height: 1.2rem;
   position: absolute;
   left: 0.2rem;
-  top: 0.2rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .gift-item-text{
   font-size: 0.28rem;
@@ -190,24 +195,34 @@ em,i,small{font-style: normal;}
   color: #fff;
 }
 .gift-item-text2{
-  font-size: 0.28rem;
+  font-size: 0.18rem;
   padding-left: 2rem;
   text-align: left;
   padding-top: 0.2rem;
-  color: #fff;
+  color: #333;
+}
+.text-2-title{
+  font-size: o.24rem;
+  font-weight: bold;
+}
+.text-2-title2{
+  color: #666;
+}
+.text-2-title3{
+  color: #d71f7a;
+  font-size: 0.34rem;
 }
 .gift-item-btn{
-  position: absolute;
-  right: 0.2rem;
-  bottom: 0.2rem;
-  width: 1rem;
-  height: 0.4rem;
-  border: none;
-  font-size: 0.18rem;
-  color: #fff;
-	background-color: rgba(40, 105, 178, 1);
-  border-radius: 0.06rem;
-  /* padding: 0 0.14rem; */
+
+}
+.gift-item-btn2{
+  margin: 0 0.47rem;
+  height: 1rem;
+  line-height: 1rem;
+  border-top: 0.02rem solid #c4c4c4;
+}
+.gift-item-btn2 img{
+  width: 2.22rem;
 }
 .gift-enpty{
   display: none;
@@ -259,7 +274,7 @@ em,i,small{font-style: normal;}
 ** 游戏规则
 **/
 .dialog-game{position: fixed;z-index: 999;width: 100%;height: 100%;top:0;left: 0;display: none;}
-.dialog-game-container{position: absolute;width:100%;height:100%;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/rule.png');background-size: cover;}
+.dialog-game-container{position: absolute;width:100%;height:100%;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/rule-2.png');background-size: cover;}
 .gameclosebtn{ width: 0.8rem; height: 0.8rem; position: absolute; top: 12.02rem; left: 3.36rem; }
 
 /*

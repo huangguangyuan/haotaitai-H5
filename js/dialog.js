@@ -15,7 +15,7 @@ function showDialog(obj) {
     if (obj.type) {
         $('.dialog').show()
         $('.dialog-tip').text(obj.tip)
-        $('.dialog-context').text(obj.text)
+        $('.dialog-context').html(obj.text)
     }
     if (obj.type === 2) {
         $('.closeDialog').show()

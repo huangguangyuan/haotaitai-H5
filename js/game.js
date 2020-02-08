@@ -1,13 +1,16 @@
 
 $('.start-btn').on('touchstart', function (e) {
     if(isEnd){
-        showDialog({type:2,tip:'活动已结束',text:`感谢关注，请尽快领取个人奖品信息
-        逾期未填写的视为放弃领奖
-        对此，好太太集团有权取消奖品的发放`});
+        showDialog({type:2,tip:'活动已结束',text:`
+        <p>感谢关注，请尽快领取个人奖品信息</p>
+        <p>逾期未填写的视为放弃领奖</p>
+        <p>对此，好太太集团有权取消奖品的发放</p>`});
     }else{
         if(chanceNum == 0){
-            showDialog({type:2,tip:'友情提示',text:`您今天的“作战”次数已用完
-            分享至朋友圈可多获得一次“作战”机会`});
+            showDialog({type:2,tip:'友情提示',text:`
+            <p>您今天的“作战”次数已用完</p>
+            <p>分享至朋友圈可多获得一次“作战”机会</p>
+            `});
         }else{
             $('.home').hide();
             $('.dialog-game').show();
