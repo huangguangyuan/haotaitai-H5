@@ -1,11 +1,28 @@
 $(function () {
-	// $('.productImg').on('touchmove', function (event) {
-	//     event.preventDefault();
-	// });
-
-	// document.body.addEventListener('touchmove', function (e) {
-	// 	e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
-	// }, { passive: false }); //passive 参数不能省略，用来兼容ios和android
+	// 首页滚动获奖名单
+	$.ajax({
+		//请求方式
+		type: 'POST',
+		//发送请求的地址
+		url: 'http://bardiss.hengdikeji.com/index.php/index/activity/getAwardsList',
+		//服务器返回的数据类型
+		dataType: 'json',
+		data: {},
+		success: function (data) {
+			if(data.status===1 && data.data.length){
+				var html=''
+				data.data.forEach(n=>{
+					html+=`<div class="winning-list-item">${n.title}</div>`
+				})
+				$('#scroll_begin').html(html)
+			}else{
+				$('#scroll_begin').html(`<div><div>`)
+			}
+		},
+		error: function (jqXHR) {
+			//请求失败函数内容
+		}
+	});
 
 	// 点击缩放
 	function zoomFn(obj) {
@@ -23,15 +40,25 @@ $(function () {
 	document.body.addEventListener('focusout', () => { // 软键盘关闭事件
 		window.scroll(0, 0) // 失焦后强制让页面归位 
 	});
-
+	// 奖励ID,填写收货信息时需要的参数
+	var awardsId = 0
 	$('.award2').on('touchstart', function (e) {
-		luckDraw();
+		$.get('http://bardiss.hengdikeji.com/index.php/index/activity/awards', function (data, status) {
+			if (data.status === 0) {
+				prizeNum = 2
+				luckDraw();
+			} else {
+				prizeNum = data.group
+				awardsId = data.id
+				luckDraw();
+			}
+		})
 	})
 
 	// 大转盘抽奖
 	function luckDraw() {
 		var deg = 1440 + prizeNum * 51.4;
-		$('.award1').css({ 'transform': 'rotate(' + deg + 'deg)','transition':' 2.5s ease-out all' });
+		$('.award1').css({ 'transform': 'rotate(' + deg + 'deg)', 'transition': ' 2.5s ease-out all' });
 		setTimeout(() => {
 			switch (prizeNum) {
 				case 1:
@@ -55,7 +82,7 @@ $(function () {
 				default:
 					showDialog({ type: 2, tip: '谢谢参与', text: '<p>感谢关注，每天闯关成功首次分享</p><p>可获得多一次抽奖机会哦</p>', giftType: 6 });
 			}
-			$('.award1').css({ 'transform': 'rotate(' + 0 + 'deg)','transition':' 0s ease-out all' });
+			$('.award1').css({ 'transform': 'rotate(' + 0 + 'deg)', 'transition': ' 0s ease-out all' });
 		}, 3000);
 	}
 
@@ -64,6 +91,48 @@ $(function () {
 		$('.luckDraw').hide();
 		$('.dialog').hide();
 		$('.dialog-form').show();
+	})
+
+	// 提交表单信息
+	$('.formbtn').on('touchstart', function (e) {
+		var name =$('#name').val()
+		var phone =$('#phone').val()
+		var addres =$('#addres').val()
+		var remark =$('#remark').val()
+		var citydata =$('#city').text()
+		var city=''		
+		if(citydata){
+			let ret =citydata.split('>')
+			if(ret){
+				city=ret.join('')
+			}
+		}
+		var data={
+			name:name,
+			phone:phone,
+			addres:addres,
+			city:city,
+			remark:remark
+		}
+		$.ajax({
+			type: 'POST',
+			url: 'http://bardiss.hengdikeji.com/index.php/index/index/exchange',
+			dataType: 'json',
+			data: data,
+			success: function (data) {
+				if (data.status === 1 && data.msg) {
+					showDialog({type:2,tip:'提交成功',text:` <p>奖品在活动结束后统一邮寄</p> <p>因新型冠状病毒疫情影响</p> <p>快递时效无法保证</p> <p>请获奖者耐心等待，如有不便，敬请原谅</p>`})
+					$('.luckDraw').hide()
+					$('.home').show()	
+				}else{
+					$('.luckDraw').hide()
+					$('.home').show()
+				}
+			},
+			error: function (jqXHR) {
+				//请求失败函数内容
+			}
+		});
 	})
 
 
@@ -78,12 +147,43 @@ $(function () {
 
 	// 排行榜
 	$('.ranking-btn').click(function () {
-		if(isChallenge){
-			$('.ranking-list').fadeIn();
-		}else{
-			showDialog({type:2,tip:'温馨提示',text:`暂无排名，赶紧去挑战吧~`});
+		if (isChallenge) {
+			$.get("http://bardiss.hengdikeji.com/index.php/index/activity/ranking", function (data, status) {
+				if (data.status === 1) {
+					var html = ''
+					if (data.data.list.length) {
+						let ret = data.data.list.find(n => n.num === data.data.num)
+						if (ret) {
+							$('.curr').html(`                        
+						<div class="curr-left">${ret.num}</div>
+						<div class="curr-center">
+							<img src="${ret.open_face}" alt="">
+							<span>${ret.open_name}</span>
+						</div>
+						<div class="curr-right">${ret.score}</div>`)
+						}
+
+						data.data.list.forEach(n => {
+							if (n.num === 1) {
+								html += ` <li> <div class="left"> <img src="./img/ico-1.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
+							} else if (n.num === 2) {
+								html += ` <li> <div class="left"> <img src="./img/ico-2.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
+							} else if (n.num === 3) {
+								html += ` <li> <div class="left"> <img src="./img/ico-3.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
+							} else {
+								html += ` <li> <div class="left"> ${n.num} </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
+							}
+
+						});
+						$(".list-content").html(html)
+						$('.ranking-list').fadeIn();
+					}
+				}
+			});
+		} else {
+			showDialog({ type: 2, tip: '温馨提示', text: `暂无排名，赶紧去挑战吧~` });
 		}
-		
+
 	});
 
 	// 关闭排行榜

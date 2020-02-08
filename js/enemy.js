@@ -29,8 +29,9 @@ Enemy.prototype.onframe = function (){
         self.bitmap = new LBitmap(new LBitmapData(imglist['bomb2']));
         self.addChild(self.bitmap);
         backLayer.removeAllEventListener();
+        clickType = 0
         showDialog({type:2,tip:'闯关失败',text:`<p>获得 ${scoreVal} 分；衣物尚未杀菌消毒彻底</p><p>仍需继续努力</p>
-        Tips：出门戴口罩，回家勤洗手</p>室内常通风，健康你我他</p>`});
+        Tips：出门戴口罩，回家勤洗手</p>室内常通风，健康你我他</p>`});      
     }
 };
 

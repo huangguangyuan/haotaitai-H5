@@ -35,31 +35,84 @@ function linkGift() {
     console.log('linkto');
 }
 
-$('.closeDialog').on('touchstart',function(e){
+$('.closeDialog').on('touchstart', function (e) {
     $('.dialog').hide();
-    switch(clickType) {
+    switch (clickType) {
+        case 0:
+            // 完成游戏后提交 —— 闯关失败
+            $.ajax({
+                type: 'POST',
+                url: 'http://bardiss.hengdikeji.com/index.php/index/activity/sub',
+                dataType: 'json',
+                data: { score: scoreVal, status: 0 },
+                success: function (data) {
+                    if (data.status === 0 && data.msg) {
+                        clickType = 2
+                        showDialog({ type: 2, tip: '友情提示', text: `${data.msg}` })
+                        $('.game').hide()
+                        $('.home').show()
+                    }
+                    if (data.status === 0) {
+                        if (data.is_awards) {
+                            $('.game').hide()
+                            $('.luckDraw').show()
+                        } else {
+                            $('.game').hide()
+                            $('.home').show()
+                        }
+                    }
+                },
+                error: function (jqXHR) {
+                    //请求失败函数内容
+                }
+            });
+            break;
         case 1:
             //闯关成功
-           $('.game').hide();
-           $('.luckDraw').show();
-           break;
+            $.ajax({
+                type: 'POST',
+                url: 'http://bardiss.hengdikeji.com/index.php/index/activity/sub',
+                dataType: 'json',
+                data: { score: scoreVal, status: 1 },
+                success: function (data) {
+                    if (data.status === 0 && data.msg) {
+                        showDialog({ type: 2, tip: '友情提示', text: `${data.msg}` })
+                        $('.game').hide()
+                        $('.home').show()
+                    }
+                    if (data.status === 0) {
+                        if (data.is_awards) {
+                            $('.game').hide()
+                            $('.luckDraw').show()
+                        } else {
+                            $('.game').hide()
+                            $('.home').show()
+                        }
+                    }
+                },
+                error: function (jqXHR) {
+                    //请求失败函数内容
+                }
+            });
+            break;
         case 2:
-           break;
+            break;
         default:
-   } 
+    }
+    clickType = 2
 })
-$('.linkGift').on('touchstart',function(e){
+$('.linkGift').on('touchstart', function (e) {
     linkGift()
 })
 // $('.prize-btn').on('touchstart',function(e){
 //     showDialog({type:2,tip:'友情提示',text:'222',giftType:2,});
 // })
-$('.ruleclosebtn').on('touchstart',function(e){
+$('.ruleclosebtn').on('touchstart', function (e) {
     $('.dialog-rule').hide()
 })
-$('.gameclosebtn').on('touchstart',function(e){
+$('.gameclosebtn').on('touchstart', function (e) {
     $('.dialog-game').hide()
 })
-$('.formclosebtn').on('touchstart',function(e){
+$('.formclosebtn').on('touchstart', function (e) {
     $('.dialog-form').hide()
 })
