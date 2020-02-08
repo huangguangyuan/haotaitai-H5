@@ -104,11 +104,11 @@ em,i,small{font-style: normal;}
 **/
 .luckDraw{background: url(../img/home-bg.jpg) center center no-repeat;background-size: cover;background-color: #0176d2;}
 .award0{position: absolute;width: 4.83rem;left: 50%;margin-left: -2.415rem;top:0.2rem;}
-.turntable{position: absolute;width: 6.6rem;height: 6.6rem;left: 50%;margin-left: -3.3rem;top:4.2rem;}
+.turntable{position: absolute;width: 6.6rem;height: 6.6rem;left: 50%;margin-left: -3.3rem;top:3.7rem;}
 .award1{position: absolute;width: 6.6rem;height: 6.6rem;left: 50%;margin-left: -3.3rem;top:0;}
-.award2{position: absolute;width: 1.34rem;left: 50%;margin-left: -0.67rem;top:2.2rem;}
+.award2{position: absolute;width: 1.34rem;left: 50%;margin-left: -0.67rem;top:1.7rem;}
 .award3{position: absolute;width: 6.96rem;left: 50%;margin-left: -3.48rem;top:3.1rem;}
-.dounLuck-banner{position: absolute;width: 6.68rem;left: 50%;margin-left: -3.34rem;top:0.8rem;}
+.dounLuck-banner{position: absolute;width: 6.61rem;left: 50%;margin-left: -3.305rem;top:1rem;}
 .shadow{position: absolute;width: 5.04rem;left: 50%;margin-left: -2.52rem;bottom: -0.5rem;}
 .yao-btn{position: absolute;width: 2.72rem;left: 50%;margin-left: -1.36rem;bottom: 0.2rem;}
 
@@ -274,7 +274,7 @@ em,i,small{font-style: normal;}
 ** 游戏规则
 **/
 .dialog-game{position: fixed;z-index: 999;width: 100%;height: 100%;top:0;left: 0;display: none;}
-.dialog-game-container{position: absolute;width:100%;height:100%;left: 50%;top:50%;transform: translate3d(-50%,-50%,0);background-image: url('../img/rule-2.png');background-size: cover;}
+.dialog-game-container{position: absolute;width:100%;height:100%;left: 50%;top:45%;transform: translate3d(-50%,-50%,0);background-image: url('../img/rule-2.png');background-size: cover;}
 .gameclosebtn{ width: 0.8rem; height: 0.8rem; position: absolute; top: 12.02rem; left: 3.36rem; }
 
 /*

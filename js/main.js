@@ -4,7 +4,7 @@ $(function () {
 		//请求方式
 		type: 'POST',
 		//发送请求的地址
-		url: 'http://bardiss.hengdikeji.com/index.php/index/activity/getAwardsList',
+		url: 'http://hotata.hengdikeji.com/index.php/index/activity/getAwardsList',
 		//服务器返回的数据类型
 		dataType: 'json',
 		data: {},
@@ -43,7 +43,7 @@ $(function () {
 	// 奖励ID,填写收货信息时需要的参数
 	var awardsId = 0
 	$('.award2').on('touchstart', function (e) {
-		$.get('http://bardiss.hengdikeji.com/index.php/index/activity/awards', function (data, status) {
+		$.get('http://hotata.hengdikeji.com/index.php/index/activity/awards', function (data, status) {
 			if (data.status === 0) {
 				prizeNum = 2
 				luckDraw();
@@ -116,7 +116,7 @@ $(function () {
 		}
 		$.ajax({
 			type: 'POST',
-			url: 'http://bardiss.hengdikeji.com/index.php/index/index/exchange',
+			url: 'http://hotata.hengdikeji.com/index.php/index/index/exchange',
 			dataType: 'json',
 			data: data,
 			success: function (data) {
@@ -148,7 +148,7 @@ $(function () {
 	// 排行榜
 	$('.ranking-btn').click(function () {
 		if (isChallenge) {
-			$.get("http://bardiss.hengdikeji.com/index.php/index/activity/ranking", function (data, status) {
+			$.get("http://hotata.hengdikeji.com/index.php/index/activity/ranking", function (data, status) {
 				if (data.status === 1) {
 					var html = ''
 					if (data.data.list.length) {

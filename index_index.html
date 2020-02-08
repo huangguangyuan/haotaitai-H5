@@ -3,42 +3,183 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>好太太-除菌消毒，捍卫家庭</title>
+    <title>2020鼠年春节宅家里无聊吗，一起来消灭新型细菌吧</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!-- 如有需要引入css资源文件请放在这里 -->
-    <link rel="stylesheet" type="text/css" href="css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="__ANION__/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="__ANION__/css/style.css">
     <!-- JQ -->
-    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="__ANION__/js/jquery-2.1.4.min.js"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
     <!--移动端版本兼容 -->
-    <script type="text/javascript" src='js/resize.js'></script>
-    <script type="text/javascript" src="./js/lufylegend-1.10.1.min.js"></script>
+    <script type="text/javascript" src='__ANION__/js/resize.js'></script>
+    <script type="text/javascript" src="__ANION__/js/lufylegend-1.10.1.min.js"></script>
     <!-- 加载资源 -->
-    <script src="https://cdn.staticfile.org/PreloadJS/0.6.0/preloadjs.min.js"></script>
-    </script>
-    <script src="./js/soundjs-0.6.2.min.js"></script>
-    <script src="./js/index_loading.js"></script>
+    <script src="http://cdn.staticfile.org/PreloadJS/0.6.0/preloadjs.min.js"></script>
+    <script src="__ANION__/js/soundjs-0.6.2.min.js"></script>
+    <script src="__ANION__/js/index_loading.js"></script>
     <script type="text/javascript">
         window.onload = function(){
             document.addEventListener('WeixinJSBridgeReady',function(){
                 $('#bgmusic')[0].play();
-            },false);
+             },false);
         }
     </script>
 </head>
 
 <body>
+	<script>
+			window.shareTit		= '2020鼠年春节宅家里无聊吗，一起来消灭新型细菌吧',
+			window.token 		= '<?php echo $token; ?>',
+			window.shopId 		= null,
+			window.scene 		= '';
+
+			// 区别是抽奖还是积分 cj =  抽奖   积分 = jf
+            window.type = 'cj';
+
+			var url 			= '__ANION__/',
+				imgSrc			= '__IMG__',
+				addres 			= '<{:url("address")}>',
+				condition		= 0,
+				beginGame		= '<?php echo $beginGame; ?>',
+				sore_products 	= '<?php echo $sore_products; ?>',
+				my_products 	= '<?php echo $my_products; ?>',
+				prize			= '<?php echo $prize; ?>',
+				ifFrist			= '<?php echo $isFrist; ?>'; // 游戏控制
+
+				beginGame   	= JSON.parse(beginGame);
+				sore_products   = JSON.parse(sore_products);
+				my_products     = JSON.parse(my_products);
+				prize     		= JSON.parse(prize);
+
+			// $(document).ready(function(){
+			// 	// 第一次进入游戏
+			// 	if(ifFrist == 0){
+			// 		condition = 0;
+			// 	}
+			// 	else{
+			// 		condition = 4;
+			// 	}
+			// }); 
+            shareTitle('2020鼠年春节宅家里无聊吗，一起来消灭新型细菌吧','','','每天免费送杀菌神器；活动时间：2020年2月9日-2月18日',"http://hotata.hengdikeji.com/static/index/img/banner.png");
+			// 分享标题 / 链接  / 图片
+		    function shareTitle(title, scene,link_url,desc,img_url){
+		        if(link_url == ''){
+                    window.link_url = "http://hotata.hengdikeji.com";
+				}else{
+                    window.link_url = link_url;
+				}
+		        window.shareTit	= title;
+		        window.scene 	= scene;
+                window.desc = desc;
+                window.img_url =img_url;
+				share();
+		    }
+            wx.config({
+                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                appId: '<{$signPackage.appId}>', // 必填，公众号的唯一标识
+                timestamp: '<{$signPackage.timestamp}>', // 必填，生成签名的时间戳
+                nonceStr: '<{$signPackage.nonceStr}>', // 必填，生成签名的随机串
+                signature: '<{$signPackage.signature}>',// 必填，签名
+                jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表
+            });
+            wx.ready(function () {
+                share();
+            })
+    	   	// 分享功能
+		    function setShare(ids){
+		    	// scene 1.game 2.shop
+		        $.get('http://hotata.hengdikeji.com/index/Index/share', {'scene': window.scene,'type':window.type, 'id': window.shopId, 'token': window.token}, function(data){
+		            if(data.status > 0){
+		            	if(data.status == 2){
+		            	    if(data.msg == "激活成功"){
+                                shareSuccess();
+							}else{
+                                beginGame.status = 1;
+                                showPop(1, data.msg);
+							}
+			        	}
+			        	prize = JSON.parse(data.prize);
+			            app.prize   = prize;
+			            app.wxScore = data.score;
+
+//                        app.myShop();
+
+		                return true;
+		            }
+		            return false;
+		        });
+		    }
+    	   	function share(){
+    	   		wx.onMenuShareTimeline({
+                    title: window.shareTit,
+                    desc: window.desc,
+                    link: window.link_url,
+                    imgUrl:window.img_url,
+                    trigger: function (res) {
+                    },
+                    success: function (res) {
+//                         popWin(3,'分享成功');
+                        setTimeout(function(){
+                            $rst = setShare();
+                        }, 500)
+
+                    },
+                    cancel: function (res) {
+                    },
+                    fail: function (res) {
+                        alert(JSON.stringify(res));
+                    }
+                });
+                wx.onMenuShareAppMessage({
+                    title: window.shareTit,
+                    desc: window.desc,
+                    link: window.link_url,
+                    imgUrl:window.img_url,
+                    trigger: function (res) {
+                    },
+                    success: function (res) {
+                        setTimeout(function(){
+                            $rst = setShare();
+                        }, 500)
+                    },
+                    cancel: function (res) {
+                    },
+                    fail: function (res) {
+                        alert(JSON.stringify(res));
+                    }
+                });
+    	    }
+
+            (function(doc, win) {
+                var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function() {
+                        var clientWidth = docEl.clientWidth;
+                        if(!clientWidth) return;
+                        if(clientWidth >= 750) {
+                            docEl.style.fontSize = '100px';
+                        } else {
+                            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                        }
+                    };
+
+                if(!doc.addEventListener) return;
+                win.addEventListener(resizeEvt, recalc, false);
+                doc.addEventListener('DOMContentLoaded', recalc, false);
+            })(document, window);
+		</script>
     <!-- 添加音乐 -->
-    <audio id="bgmusic" class="yue" controls preload="auto" loop="loop" src="./music/bgm.mp3"></audio>
-    <!-- <img src="img/yue.png" alt="" class="mus rotate"> -->
+    <audio id="bgmusic" class="yue" controls preload="auto" loop="loop" src="__ANION__/music/bgm2.mp3"></audio>
+    <img src="__ANION__/img/yue.png" alt="" class="mus rotate">
     <div class="loading" style="display:block;">
         <div class="innerDiv">
-            <img src="./img/logo.png" alt="" class="logo">
-            <img src="./img/image.png" alt="" class="image">
+            <img src="__ANION__/img/logo.png" alt="" class="logo">
+            <img src="__ANION__/img/image.png" alt="" class="image">
             <div class="progress-bar">
                 <span class="bar"></span>
             </div>
@@ -50,18 +191,18 @@
         <!-- 引导页 -->
         <div class="guide-bg pageSytle" style="display: none;">
             <div class="innerDiv">
-                <img src="./img/logo.png" alt="" class="logo">
-                <img src="./img/guide-img1.png" alt="" class="guide-img1">
-                <img src="./img/guide-img2.png" alt="" class="guide-img2">
-                <img src="./img/guide-img3.png" alt="" class="guide-img3">
+                <img src="__ANION__/img/logo.png" alt="" class="logo">
+                <img src="__ANION__/img/guide-img1.png" alt="" class="guide-img1">
+                <img src="__ANION__/img/guide-img2.png" alt="" class="guide-img2">
+                <img src="__ANION__/img/guide-img3.png" alt="" class="guide-img3">
             </div>
         </div>
         <!-- 首页 -->
         <div class="home pageSytle">
             <div class="innerDiv">
-                <img src="./img/logo.png" alt="" class="logo">
+                <img src="__ANION__/img/logo.png" alt="" class="logo">
                 <div class="surplus">
-                    <img src="./img/icon.png" alt="" class="icon">
+                    <img src="__ANION__/img/icon.png" alt="" class="icon">
                     <span>今天还剩机会 <em class="chanceNum">5</em> 次</span>
                 </div>
                 <div class="winning-list" id="scroll_div">
@@ -72,25 +213,25 @@
                     </div>
                     <div id="scroll_end"></div>
                 </div>
-                <img src="./img/active-ico.png" alt="" class="active-ico">
-                <img src="./img/banner.png" alt="" class="banner">
-                <img src="./img/banner2.png" alt="" class="banner2">
-                <img src="./img/start-btn.png" alt="" class="start-btn clickBtn">
-                <img src="./img/prize-btn.png" alt="" class="prize-btn">
-                <img src="./img/ranking-btn.png" alt="" class="ranking-btn">
+                <img src="__ANION__/img/active-ico.png" alt="" class="active-ico">
+                <img src="__ANION__/img/banner.png" alt="" class="banner">
+                <img src="__ANION__/img/banner2.png" alt="" class="banner2">
+                <img src="__ANION__/img/start-btn.png" alt="" class="start-btn clickBtn">
+                <img src="__ANION__/img/prize-btn.png" alt="" class="prize-btn">
+                <img src="__ANION__/img/ranking-btn.png" alt="" class="ranking-btn">
             </div>
         </div>
         <!-- 排行榜 -->
         <div class="ranking-list pageSytle">
             <div class="innerDiv">
-                <img src="./img/logo.png" alt="" class="logo">
-                <!-- <img src="./img/close-btn.png" alt="" class="close-btn rankBtn"> -->
-                <img src="./img/ranking-banner-2.png" alt="" class="ranking-banner">
+                <img src="__ANION__/img/logo.png" alt="" class="logo">
+                <!-- <img src="__ANION__/img/close-btn.png" alt="" class="close-btn rankBtn"> -->
+                <img src="__ANION__/img/ranking-banner-2.png" alt="" class="ranking-banner">
                 <div class="list">
                     <div class="curr">
                         <div class="curr-left">48</div>
                         <div class="curr-center">
-                            <img src="./img/header-img.png" alt="">
+                            <img src="__ANION__/img/header-img.png" alt="">
                             <span>昵称昵称</span>
                         </div>
                         <div class="curr-right">23</div>
@@ -104,10 +245,10 @@
                     <ul class="list-content">
                         <li>
                             <div class="left">
-                                <img src="./img/ico-1.png" alt="">
+                                <img src="__ANION__/img/ico-1.png" alt="">
                             </div>
                             <div class="center">
-                                <img src="./img/header-img.png" alt="">
+                                <img src="__ANION__/img/header-img.png" alt="">
                                 <span>昵称昵称</span>
                             </div>
                             <div class="right">
@@ -116,10 +257,10 @@
                         </li>
                         <li>
                             <div class="left">
-                                <img src="./img/ico-2.png" alt="">
+                                <img src="__ANION__/img/ico-2.png" alt="">
                             </div>
                             <div class="center">
-                                <img src="./img/header-img.png" alt="">
+                                <img src="__ANION__/img/header-img.png" alt="">
                                 <span>昵称昵称</span>
                             </div>
                             <div class="right">
@@ -128,10 +269,10 @@
                         </li>
                         <li>
                             <div class="left">
-                                <img src="./img/ico-3.png" alt="">
+                                <img src="__ANION__/img/ico-3.png" alt="">
                             </div>
                             <div class="center">
-                                <img src="./img/header-img.png" alt="">
+                                <img src="__ANION__/img/header-img.png" alt="">
                                 <span>昵称昵称</span>
                             </div>
                             <div class="right">
@@ -143,7 +284,7 @@
                                 4
                             </div>
                             <div class="center">
-                                <img src="./img/header-img.png" alt="">
+                                <img src="__ANION__/img/header-img.png" alt="">
                                 <span>昵称昵称</span>
                             </div>
                             <div class="right">
@@ -155,7 +296,7 @@
                                 5
                             </div>
                             <div class="center">
-                                <img src="./img/header-img.png" alt="">
+                                <img src="__ANION__/img/header-img.png" alt="">
                                 <span>昵称昵称</span>
                             </div>
                             <div class="right">
@@ -167,7 +308,7 @@
                                 6
                             </div>
                             <div class="center">
-                                <img src="./img/header-img.png" alt="">
+                                <img src="__ANION__/img/header-img.png" alt="">
                                 <span>昵称昵称</span>
                             </div>
                             <div class="right">
@@ -179,7 +320,7 @@
                                 7
                             </div>
                             <div class="center">
-                                <img src="./img/header-img.png" alt="">
+                                <img src="__ANION__/img/header-img.png" alt="">
                                 <span>昵称昵称</span>
                             </div>
                             <div class="right">
@@ -191,7 +332,7 @@
                                 8
                             </div>
                             <div class="center">
-                                <img src="./img/header-img.png" alt="">
+                                <img src="__ANION__/img/header-img.png" alt="">
                                 <span>昵称昵称</span>
                             </div>
                             <div class="right">
@@ -203,7 +344,7 @@
                                 9
                             </div>
                             <div class="center">
-                                <img src="./img/header-img.png" alt="">
+                                <img src="__ANION__/img/header-img.png" alt="">
                                 <span>昵称昵称</span>
                             </div>
                             <div class="right">
@@ -220,7 +361,7 @@
                         <p>马上兑换</p>
                         <p style="font-size: 0.24rem;">剩下<span class="endNum">1</span>套</p>
                     </div>
-                    <!-- <img src="./img/btn-bg.png" alt=""> -->
+                    <!-- <img src="__ANION__/img/btn-bg.png" alt=""> -->
                 </div>
             </div>
         </div>
@@ -233,17 +374,18 @@
         <!-- 大转盘 -->
         <div class="luckDraw pageSytle">
             <div class="innerDiv">
-                <img src="./img/logo.png" alt="" class="logo">
+                <img src="__ANION__/img/logo.png" alt="" class="logo">
                 <div class="surplus2">
-                    <img src="./img/icon.png" alt="" class="icon">
+                    <img src="__ANION__/img/icon.png" alt="" class="icon">
                     <span>今天还剩机会 <em>5</em> 次抽奖机会</span>
                 </div>
-                <img src="./img/dounLuck-banner.png" alt="" class="dounLuck-banner">
+                <img src="__ANION__/img/dounLuck-banner.png" alt="" class="dounLuck-banner">
                 <div class="turntable">
-                    <img src="./img/award1.png" alt="" class="award1">
-                    <img src="./img/award2.png" alt="" class="award2 clickBtn">
+                    <img src="__ANION__/img/award1.png" alt="" class="award1">
+                    <img src="__ANION__/img/award2.png" alt="" class="award2 clickBtn">
+                    <img src="__ANION__/img/shadow.png" alt="" class="shadow">
                 </div>
-                <img src="./img/yao-btn.png" alt="" class="yao-btn">
+                <img src="__ANION__/img/yao-btn.png" alt="" class="yao-btn">
             </div>
         </div>
         <!-- 我的礼品页面 -->
@@ -254,7 +396,7 @@
                 </div> -->
                 <div class="gift-main">
                     <div class="gift-tab">
-                        <img src="./img/gift2.png" alt="" class="gift-tab-img">
+                        <img src="__ANION__/img/gift2.png" alt="" class="gift-tab-img">
                         <div class="git-tab-main">
                             <div class="tab-btn tab-1"></div>
                             <div class="tab-btn tab-2"></div>
@@ -266,7 +408,7 @@
                         <div class="gift-bg-1-data">
                             <div class="gift-list">
                                 <div class="gift-item">
-                                    <img src="./img/a.png" alt="" class="gift-item-img" style="width:1.61rem">
+                                    <img src="__ANION__/img/a.png" alt="" class="gift-item-img" style="width:1.61rem">
                                     <div class="gift-item-text2">
                                         <p class="text-2-title">晾衣机GW-1122BS</p>
                                         <p class="text-2-title2">奖品不含安装，图片仅供参考，以收到的实物为准。</p>
@@ -274,12 +416,12 @@
                                     </div>
                                 </div>
                                 <div class="gift-item-btn2">
-                                    <img src="./img/gift12.png" class="gift-item-btn giftget"> 
+                                    <img src="__ANION__/img/gift12.png" class="gift-item-btn giftget"> 
                                 </div>
                             </div>
                             <div class="gift-list">
                                 <div class="gift-item">
-                                    <img src="./img/b.png" alt="" class="gift-item-img" style="width:0.77rem">
+                                    <img src="__ANION__/img/b.png" alt="" class="gift-item-img" style="width:0.77rem">
                                     <div class="gift-item-text2">
                                         <p class="text-2-title">智能锁A71</p>
                                         <p class="text-2-title2">奖品不含安装，图片仅供参考，以收到的实物为准。</p>
@@ -287,19 +429,19 @@
                                     </div>
                                 </div>
                                 <div class="gift-item-btn2">
-                                    <img src="./img/gift11.png" class="gift-item-btn giftshow">    
+                                    <img src="__ANION__/img/gift11.png" class="gift-item-btn giftshow">    
                                 </div>
                             </div> 
                         </div>
 
                         <div class="gift-enpty">
-                            <img src="./img/gift4.png" alt="" class="gift-enpty-img">
+                            <img src="__ANION__/img/gift4.png" alt="" class="gift-enpty-img">
                         </div>
                     </div>
                     <!-- 积分商城 -->
                     <div class="gift-bg gift-bg-2">
                         <div class="gift-item">
-                            <img src="./img/a.png" alt="" class="gift-item-img" style="width:1.61rem">
+                            <img src="__ANION__/img/a.png" alt="" class="gift-item-img" style="width:1.61rem">
                             <div class="gift-item-text2">
                                 <p class="text-2-title">消毒晾衣机GW-1122BS</p>
                                 <p class="text-2-title2">奖品不含安装，图片仅供参考，以收到的实物为准。</p>
@@ -308,7 +450,7 @@
                             <!-- <button class="gift-item-btn giftshow">查看</button> -->
                         </div>
                         <div class="gift-item">
-                            <img src="./img/b.png" alt="" class="gift-item-img" style="width:0.77rem">
+                            <img src="__ANION__/img/b.png" alt="" class="gift-item-img" style="width:0.77rem">
                             <div class="gift-item-text2">
                                 <p class="text-2-title">智能锁A71</p>
                                 <p class="text-2-title2">奖品不含安装，图片仅供参考，以收到的实物为准。</p>
@@ -316,7 +458,7 @@
                             </div>
                         </div>
                         <div class="gift-item">
-                            <img src="./img/c.png" alt="" class="gift-item-img" style="width:1.33rem">
+                            <img src="__ANION__/img/c.png" alt="" class="gift-item-img" style="width:1.33rem">
                             <div class="gift-item-text2">
                                 <p class="text-2-title">铝合金落地衣架</p>
                                 <p class="text-2-title2">图片仅供参考，以收到的实物为准。</p>
@@ -324,7 +466,7 @@
                             </div>
                         </div>
                         <div class="gift-item">
-                            <img src="./img/d.png" alt="" class="gift-item-img" style="width:1.45rem">
+                            <img src="__ANION__/img/d.png" alt="" class="gift-item-img" style="width:1.45rem">
                             <div class="gift-item-text2">
                                 <p class="text-2-title">铝合金衣架礼盒</p>
                                 <p class="text-2-title2">图片仅供参考，以收到的实物为准。</p>
@@ -332,7 +474,7 @@
                             </div>
                         </div>
                         <div class="gift-item">
-                            <img src="./img/e.png" alt="" class="gift-item-img" style="width:1.2rem">
+                            <img src="__ANION__/img/e.png" alt="" class="gift-item-img" style="width:1.2rem">
                             <div class="gift-item-text2">
                                 <p class="text-2-title">代金券</p>
                                 <p class="text-2-title2">仅限购买智能晾衣机和智能锁使用，一次只能使用一张。 </p>
@@ -341,7 +483,7 @@
                         </div>
                     </div>
                     <div class="gift-btn">
-                        <img src="./img/gift10.png" alt="" class="gift-tab-btn giftcheckbtn">
+                        <img src="__ANION__/img/gift10.png" alt="" class="gift-tab-btn giftcheckbtn">
                     </div> 
                 </div>
 
@@ -359,7 +501,7 @@
     <div class="dialog">
         <div class="dialog-container">
             <div>
-                <img src="./img/dialog-top.png" alt="" class="dialog-top">
+                <img src="__ANION__/img/dialog-top.png" alt="" class="dialog-top">
             </div>
             <div class="dialog-text">
                 <p class="dialog-tip">友情提示</p>
@@ -367,26 +509,26 @@
                 <!-- <p class="dialog-context">分享至朋友圈可多获得一次“作战”机会</p> -->
             </div>
             <!-- 立即领取 -->
-            <img src="./img/dialog-btn-1.png" alt="" class="dialog-btn linkGift">
+            <img src="__ANION__/img/dialog-btn-1.png" alt="" class="dialog-btn linkGift">
             <!-- 我知道了 -->
-            <img src="./img/dialog-btn-2.png" alt="" class="dialog-btn closeDialog">
+            <img src="__ANION__/img/dialog-btn-2.png" alt="" class="dialog-btn closeDialog">
         </div>
     </div>
     <!-- 活动规则弹框 -->
     <div class="dialog-rule">
         <div class="dialog-rule-container">
             <div>
-                <img src="./img/dialog-rule.png" alt="" class="dialog-rule-top">
+                <img src="__ANION__/img/dialog-rule.png" alt="" class="dialog-rule-top">
             </div>
             <div class="dialog-rule-main">
-                <div style="font-size: 0.28rem;font-weight: bold;">活动时间:<span>2020年2月7日-2月16日</span></div>
+                <div style="font-size: 0.28rem;font-weight: bold;">活动时间:<span>2020年2月9日-2月18日</span></div>
                 <div style="font-size: 0.28rem;font-weight: bold;padding-top: 0.1rem;">活动内容:</div>
-                <div style="font-size: 0.28rem;font-weight: bold;"><img style="width: 0.15rem;" src="./img/rule-arrow.png" alt="">H5游戏规则</div>
+                <div style="font-size: 0.28rem;font-weight: bold;"><img style="width: 0.15rem;" src="__ANION__/img/rule-arrow.png" alt="">H5游戏规则</div>
                 <div>1.	 每日首次通关游戏可以获得一次抽奖机会，每日首次转发H5可以获得额外一次抽奖机会抽奖次数限当天使用。</div>
                 <div>2.	游戏通关还可以获得积分，积分累积到1万分的玩家可兑换衣架礼盒一套，全国限量100套先到先得，兑完即止。</div>
                 <div>3.	每日可以免费游戏一次，转发邀请好友参与游戏可以获得更多游戏机会，每日游戏机会上限10次</div>
                 <div> </div>
-                <div style="font-size: 0.28rem;font-weight: bold;padding-top: 0.08rem;"><img style="width: 0.15rem;" src="./img/rule-arrow.png" alt="">奖品设置</div>
+                <div style="font-size: 0.28rem;font-weight: bold;padding-top: 0.08rem;"><img style="width: 0.15rem;" src="__ANION__/img/rule-arrow.png" alt="">奖品设置</div>
                 <div>1.	一等奖：晾衣机GW-1122BS一套，包邮不包安装；</div>
                 <div>2.	二等奖：智能锁A71一套，包邮不包安装；</div> 
                 <div>3. 三等奖：落地衣架GW-5823一套，包邮；</div>
@@ -394,24 +536,24 @@
                 <div>5. 五等奖：200元通用代金券，购买智能晾衣机和智能锁均可使用；</div>
                 <div>6.	幸运奖：随机现金红包，通过微信红包发放抽中实物奖品后，请在48小时内填写收货地址和联系人信息，逾期未填写的视为放弃领奖，对此好太太集团有权取消奖品的发放。</div>
                 <div style="font-size: 0.28rem;font-weight: bold;">活动范围：中国大陆（不含港澳台地区）</div>
-                <div style="font-size: 0.28rem;font-weight: bold;padding-top: 0.08rem;"><img style="width: 0.15rem;" src="./img/rule-arrow.png" alt="">奖品邮寄说明</div>
+                <div style="font-size: 0.28rem;font-weight: bold;padding-top: 0.08rem;"><img style="width: 0.15rem;" src="__ANION__/img/rule-arrow.png" alt="">奖品邮寄说明</div>
                 <div>奖品在活动结束后统一邮寄，</div>
                 <div>因新型冠状病毒疫情影响，快递时效无法保证，请</div>
                 <div>获奖者耐心等待，如有不便，敬请原谅</div>
-                <div style="font-size: 0.28rem;font-weight: bold;padding-top: 0.08rem;"><img style="width: 0.15rem;" src="./img/rule-arrow.png" alt="">反作弊声明</div>
+                <div style="font-size: 0.28rem;font-weight: bold;padding-top: 0.08rem;"><img style="width: 0.15rem;" src="__ANION__/img/rule-arrow.png" alt="">反作弊声明</div>
                 <div>为了保障玩家的个人权益和维护游戏公平公正的活动环境，在此，我们郑重表态，对于任何破坏活动公平、公正环境的外挂及其相关行为，我们都将予以最坚决的打击并做出相应的惩罚。</div>
                 <div>一旦发现玩家在游戏过程中有使用外挂及其相关的行为，好太太集团有权取消其参与活动的资格，并将已获得的礼品和积分取消。</div>
                 <div>我们会定时公告惩罚名单，如有疑问，可以致电客服电话400-716-2229进行申诉。</div>
                 <div>该声明即日起有效。</div>
                 <div style="text-align: center;padding-top: 0.56rem;">在法律允许的范围内，本次活动的最终解释权归广东好太太科技集团股份有限公司所有</div>        
             </div>
-            <img src="./img/colse.png" alt="" class="ruleclosebtn">
+            <img src="__ANION__/img/colse.png" alt="" class="ruleclosebtn">
         </div>
     </div>
     <!-- 游戏规则 -->
     <div class="dialog-game">
         <div class="dialog-game-container">
-            <img src="./img/colse.png" alt="" class="gameclosebtn">
+            <img src="__ANION__/img/colse.png" alt="" class="gameclosebtn">
         </div>
     </div>
     <!-- 分享弹框 -->
@@ -422,26 +564,26 @@
     <!-- 红包弹框 -->
     <div class="dialog-red">
         <div class="dialog-red-container">
-            <img src="./img/redback.png" alt="" class="redclosebtn">
+            <img src="__ANION__/img/redback.png" alt="" class="redclosebtn">
         </div>
     </div>
     <!-- 200元代金劵弹框 -->
     <div class="dialog-money">
         <div class="dialog-money-container">
-            <img src="./img/moneyuse.png" alt="" class="moneyusebtn">
-            <img src="./img/redback.png" alt="" class="moneyclosebtn">
+            <img src="__ANION__/img/moneyuse.png" alt="" class="moneyusebtn">
+            <img src="__ANION__/img/redback.png" alt="" class="moneyclosebtn">
         </div>
     </div>
     <!-- 铝合金衣架礼盒 -->
     <div class="dialog-my-cloth">
         <div class="dialog-my-cloth-container">
             <div>
-                <img src="./img/my-2.png" alt="" class="dialog-my-top">
+                <img src="__ANION__/img/my-2.png" alt="" class="dialog-my-top">
             </div>
             <div class="dialog-my-text">
                 <p class="dialog-my-tip">铝合金衣架礼盒</p>
                 <p class="dialog-my-context">图片仅供参考，以收到的实物为准</p>
-                <img class="dialog-my-info" src="./img/my-info.png" alt="">
+                <img class="dialog-my-info" src="__ANION__/img/my-info.png" alt="">
             </div>
             <div style="padding:0 0.4rem;">
                 <div class="form-my-info">
@@ -461,19 +603,19 @@
                 </div>
             </div>
             <!-- 返回按钮 -->
-            <img src="./img/redback.png" alt="" class="dialog-my-btn dialog-my-btn-1">
+            <img src="__ANION__/img/redback.png" alt="" class="dialog-my-btn dialog-my-btn-1">
         </div>
     </div>
     <!-- 铝合金落地衣架 -->
     <div class="dialog-my-cloth-2">
         <div class="dialog-my-cloth-container">
             <div>
-                <img src="./img/my-1.png" alt="" class="dialog-my-top-2">
+                <img src="__ANION__/img/my-1.png" alt="" class="dialog-my-top-2">
             </div>
             <div class="dialog-my-text">
                 <p class="dialog-my-tip">铝合金落地衣架</p>
                 <p class="dialog-my-context">图片仅供参考，以收到的实物为准</p>
-                <img class="dialog-my-info" src="./img/my-info.png" alt="">
+                <img class="dialog-my-info" src="__ANION__/img/my-info.png" alt="">
             </div>
             <div style="padding:0 0.4rem;">
                 <div class="form-my-info">
@@ -493,20 +635,20 @@
                 </div>
             </div>
             <!-- 返回按钮 -->
-            <img src="./img/redback.png" alt="" class="dialog-my-btn dialog-my-btn-2">
+            <img src="__ANION__/img/redback.png" alt="" class="dialog-my-btn dialog-my-btn-2">
         </div>
     </div>
     <!-- 智能锁A71（不含安装） -->
     <div class="dialog-my-cloth-3">
         <div class="dialog-my-cloth-container-2">
             <div>
-                <img src="./img/my-4.png" alt="" class="dialog-my-top-4">
+                <img src="__ANION__/img/my-4.png" alt="" class="dialog-my-top-4">
             </div>
             <div class="dialog-my-text">
                 <p class="dialog-my-tip">智能锁A71（不含安装）</p>
                 <p class="dialog-my-context">奖品不含安装，图片仅供参考</p>
                 <p class="dialog-my-context">以收到的实物为准</p>
-                <img class="dialog-my-info" src="./img/my-info.png" alt="">
+                <img class="dialog-my-info" src="__ANION__/img/my-info.png" alt="">
             </div>
             <div style="padding:0 0.4rem;">
                 <div class="form-my-info">
@@ -526,20 +668,20 @@
                 </div>
             </div>
             <!-- 返回按钮 -->
-            <img src="./img/redback.png" alt="" class="dialog-my-btn dialog-my-btn-3">
+            <img src="__ANION__/img/redback.png" alt="" class="dialog-my-btn dialog-my-btn-3">
         </div>
     </div>
     <!-- 消毒晾衣机GW-1122BS -->
     <div class="dialog-my-cloth-4">
         <div class="dialog-my-cloth-container-2">
             <div>
-                <img src="./img/my-3.png" alt="" class="dialog-my-top">
+                <img src="__ANION__/img/my-3.png" alt="" class="dialog-my-top">
             </div>
             <div class="dialog-my-text">
                 <p class="dialog-my-tip">消毒晾衣机GW-1122BS</p>
                 <p class="dialog-my-context">奖品不含安装，图片仅供参考</p>
                 <p class="dialog-my-context">以收到的实物为准</p>
-                <img class="dialog-my-info" src="./img/my-info.png" alt="">
+                <img class="dialog-my-info" src="__ANION__/img/my-info.png" alt="">
             </div>
             <div style="padding:0 0.4rem;">
                 <div class="form-my-info">
@@ -559,14 +701,14 @@
                 </div>
             </div>
             <!-- 返回按钮 -->
-            <img src="./img/redback.png" alt="" class="dialog-my-btn dialog-my-btn-3">
+            <img src="__ANION__/img/redback.png" alt="" class="dialog-my-btn dialog-my-btn-3">
         </div>
     </div>
     <!-- 填写个人信息弹框 -->
     <div class="dialog-form">
         <div class="dialog-form-container">
             <div>
-                <img src="./img/dialog-form.png" alt="" class="dialog-form-top">
+                <img src="__ANION__/img/dialog-form.png" alt="" class="dialog-form-top">
             </div>
             <div style="padding:0 0.4rem;">
                 <form action="">
@@ -603,7 +745,7 @@
                                 </section>
                                 <!--遮罩层-->
                                 <div id="areaMask" class="mask"></div>
-                                <script src="./js/jquery.area.js"></script>
+                                <script src="__ANION__/js/jquery.area.js"></script>
                             </div>
                         </div>
                     </div>
@@ -617,20 +759,20 @@
                     </div>
             </form>
             </div>
-            <img src="./img/dialog-form-btn.png" alt="" class="formbtn">
-            <img src="./img/colse.png" alt="" class="formclosebtn">
+            <img src="__ANION__/img/dialog-form-btn.png" alt="" class="formbtn">
+            <img src="__ANION__/img/colse.png" alt="" class="formclosebtn">
         </div>
     </div>
     <!-- mian -->
-    <script type="text/javascript" src='./js/Bullet.js'></script>
-    <script type="text/javascript" src='./js/Player.js'></script>
-    <script type="text/javascript" src='./js/enemy.js'></script>
-    <script type="text/javascript" src='./js/magic.js'></script>
-    <script type="text/javascript" src='./js/boss.js'></script>
-    <script type="text/javascript" src='./js/game.js'></script>
-    <script type="text/javascript" src='./js/main.js'></script>
-    <script type="text/javascript" src='./js/dialog.js'></script>
-    <script type="text/javascript" src='./js/gift.js'></script>
+    <script type="text/javascript" src='__ANION__/js/Bullet.js'></script>
+    <script type="text/javascript" src='__ANION__/js/Player.js'></script>
+    <script type="text/javascript" src='__ANION__/js/enemy.js'></script>
+    <script type="text/javascript" src='__ANION__/js/magic.js'></script>
+    <script type="text/javascript" src='__ANION__/js/boss.js'></script>
+    <script type="text/javascript" src='__ANION__/js/game.js'></script>
+    <script type="text/javascript" src='__ANION__/js/main.js'></script>
+    <script type="text/javascript" src='__ANION__/js/dialog.js'></script>
+    <script type="text/javascript" src='__ANION__/js/gift.js'></script>
     <script>
         //  $("#distpicker").distpicker();
     </script>
