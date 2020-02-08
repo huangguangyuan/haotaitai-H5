@@ -33,13 +33,11 @@ $(function () {
 			// 播放音乐
 			$('.mus').attr('src', './img/yue.png');
 			$('.mus').addClass('rotate');
-			bgm.play();
 			isOpen = false;
 		} else {
 			// 关闭音乐
 			$('.mus').attr('src', './img/yue2.png');
 			$('.mus').removeClass('rotate');
-			bgm.paused = true;
 			isOpen = true;
 		}
 	});

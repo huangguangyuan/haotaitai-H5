@@ -43,8 +43,8 @@ var imglist = {};
  * 【开始角度，增加角度，子弹速度，角度加速度，子弹总数，发动频率，枪口旋转】
  * */
 var bulletList = new Array(
-    { startAngle: -90, angle: 20, step: 10, speed: 15, count: 1 },//1发
-    { startAngle: -110, angle: 20, step: 10, speed: 15, count: 3 },//3发
+    { startAngle: -90, angle: 20, step: 5, speed: 30, count: 1 },//1发
+    { startAngle: -110, angle: 20, step: 5, speed: 30, count: 3 },//3发
     { startAngle: -40, angle: 20, step: 10, speed: 15, count: 5 },//5发
     { startAngle: 0, angle: 20, step: 10, speed: 15, count: 18 },//环发
     { startAngle: 180, angle: 20, step: 50, speed: 15, count: 1 },//1发
