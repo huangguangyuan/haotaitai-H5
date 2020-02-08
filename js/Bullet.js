@@ -57,7 +57,10 @@ Bullet.prototype.onframe = function () {
                     boss.isDie = true;
                     scoreVal += 200;
                     scoreTxt.text = scoreVal;
-                    showDialog({type:2,tip:'闯关成功',text:`获得 ${scoreVal} 分与一次抽奖机会Tips：手机钥匙等随时物品也要记得消毒喔~`});
+                    showDialog({type:2,tip:'闯关成功',text:`
+                    <p>获得 ${scoreVal} 分与一次抽奖机会</p>
+                    <p>Tips：手机钥匙等随时物品也要</p>
+                    <p>记得消毒喔~</p>`});
                     clickType = 1;
                     isOnes = false;
                 }
