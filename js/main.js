@@ -38,7 +38,7 @@ $(function () {
 
 
 	document.body.addEventListener('focusout', () => { // 软键盘关闭事件
-		window.scroll(0, 0) // 失焦后强制让页面归位 
+		window.scroll(0, 0) // 失焦后强制让页面归位
 	});
 	// 奖励ID,填写收货信息时需要的参数
 	var awardsId = 0
@@ -100,7 +100,7 @@ $(function () {
 		var addres =$('#addres').val()
 		var remark =$('#remark').val()
 		var citydata =$('#city').text()
-		var city=''		
+		var city=''
 		if(citydata){
 			let ret =citydata.split('>')
 			if(ret){
@@ -123,7 +123,7 @@ $(function () {
 				if (data.status === 1 && data.msg) {
 					showDialog({type:2,tip:'提交成功',text:` <p>奖品在活动结束后统一邮寄</p> <p>因新型冠状病毒疫情影响</p> <p>快递时效无法保证</p> <p>请获奖者耐心等待，如有不便，敬请原谅</p>`})
 					$('.luckDraw').hide()
-					$('.home').show()	
+					$('.home').show()
 				}else{
 					$('.luckDraw').hide()
 					$('.home').show()
@@ -154,7 +154,7 @@ $(function () {
 					if (data.data.list.length) {
 						let ret = data.data.list.find(n => n.num === data.data.num)
 						if (ret) {
-							$('.curr').html(`                        
+							$('.curr').html(`
 						<div class="curr-left">${ret.num}</div>
 						<div class="curr-center">
 							<img src="${ret.open_face}" alt="">
@@ -165,11 +165,11 @@ $(function () {
 
 						data.data.list.forEach(n => {
 							if (n.num === 1) {
-								html += ` <li> <div class="left"> <img src="__ANION__/img/ico-1.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
+								html += ` <li> <div class="left"> <img src="` + url + `/img/ico-1.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
 							} else if (n.num === 2) {
-								html += ` <li> <div class="left"> <img src="__ANION__/img/ico-2.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
+								html += ` <li> <div class="left"> <img src="` + url + `/img/ico-2.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
 							} else if (n.num === 3) {
-								html += ` <li> <div class="left"> <img src="__ANION__/img/ico-3.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
+								html += ` <li> <div class="left"> <img src="` + url + `/img/ico-3.png" alt=""> </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
 							} else {
 								html += ` <li> <div class="left"> ${n.num} </div> <div class="center"> <img src="${n.open_face}" alt=""> <span>${n.open_name}</span> </div> <div class="right"> <span>${n.score}</span> </div> </li>`
 							}
