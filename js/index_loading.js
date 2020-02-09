@@ -31,15 +31,17 @@ $(function () {
 	$('.mus').click(function () {
 		if (isOpen) {
 			// 播放音乐
-			$('.mus').attr('src', '/static/index/img/yue.png');
+			$('.mus').attr('src', url+'/img/yue.png');
 			$('.mus').addClass('rotate');
-			bgm.play();
+			// bgm.play();
+			$('#bgmusic')[0].play();
 			isOpen = false;
 		} else {
 			// 关闭音乐
-			$('.mus').attr('src', '/static/index/img/yue2.png');
+			$('.mus').attr('src', url+'/img/yue2.png');
 			$('.mus').removeClass('rotate');
-			bgm.paused = true;
+			// bgm.paused = true;
+			$('#bgmusic')[0].pause();
 			isOpen = true;
 		}
 	});
