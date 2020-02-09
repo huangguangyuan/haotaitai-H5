@@ -48,7 +48,7 @@ $('.closeDialog').on('touchstart', function (e) {
                 success: function (data) {
                     if (data.status === 0 && data.msg) {
                         clickType = 2
-                        showDialog({ type: 2, tip: '友情提示', text: `${data.msg}` })
+                        showDialog({ type: 2, tip: '友情提示', text: `<div style="padding: 0 1rem;">${data.msg}</div>` })
                         $('.game').hide()
                         $('.home').show()
                     }
@@ -76,7 +76,7 @@ $('.closeDialog').on('touchstart', function (e) {
                 data: { score: scoreVal, status: 1 },
                 success: function (data) {
                     if (data.status === 0 && data.msg) {
-                        showDialog({ type: 2, tip: '友情提示', text: `${data.msg}` })
+                        showDialog({ type: 2, tip: '友情提示', text: `<div style="padding: 0 1rem;">${data.msg}</div>` })
                         $('.game').hide()
                         $('.home').show()
                     }
