@@ -1,5 +1,8 @@
 $(function () {
     $('.prize-btn').on('touchstart', function (e) {
+        showDialog({type:2,tip:'温馨提醒',text:`
+        <p>活动即将开始</p>`});
+        return
         $('.home').hide();
         $('.gift').show();
         // 点击我的奖品请求

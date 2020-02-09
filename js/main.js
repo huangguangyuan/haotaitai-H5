@@ -147,7 +147,13 @@ $(function () {
 
 	// 排行榜
 	$('.ranking-btn').click(function () {
+		showDialog({type:2,tip:'温馨提醒',text:`
+        <p>活动即将开始</p>`});
+        return
 		if (isChallenge) {
+			$.get('http://hotata.hengdikeji.com/index/lottery/prizenumb',function(data)=>{
+
+			})
 			$.get("http://hotata.hengdikeji.com/index.php/index/activity/ranking", function (data, status) {
 				if (data.status === 1) {
 					var html = ''

@@ -1,5 +1,8 @@
-
 $('.start-btn').on('touchstart', function (e) {
+    showDialog({type:2,tip:'温馨提醒',text:`
+    <p>活动即将开始</p>`});
+
+    return
     if(isEnd){
         showDialog({type:2,tip:'活动已结束',text:`
         <p>感谢关注，请尽快领取个人奖品信息</p>
