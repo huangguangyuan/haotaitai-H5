@@ -1,4 +1,4 @@
-$(function () {
+$(function () {	
 	// 首页滚动获奖名单
 	$.ajax({
 		//请求方式
@@ -151,7 +151,7 @@ $(function () {
         <p>活动即将开始</p>`});
         return
 		if (isChallenge) {
-			$.get('http://hotata.hengdikeji.com/index/lottery/prizenumb',function(data)=>{
+			$.get('http://hotata.hengdikeji.com/index/lottery/prizenumb',function(data){
 
 			})
 			$.get("http://hotata.hengdikeji.com/index.php/index/activity/ranking", function (data, status) {
